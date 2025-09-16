@@ -79,6 +79,64 @@ def get_locale():
 
 babel.init_app(app, locale_selector=get_locale)
 
+def init_db():
+    """Initialize database tables"""
+    try:
+        db.create_all()
+        print("✅ Database tables created successfully!")
+        
+        # Verify table exists
+        inspector = db.inspect(db.engine)
+        if 'user' in inspector.get_table_names():
+            print("✅ 'user' table verified in database!")
+            return True
+        else:
+            raise Exception("Table creation succeeded but 'user' table not found!")
+            
+    except Exception as e:
+        print(f"❌ Error creating database tables: {e}")
+        print(f"💡 Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
+        print("💡 Try: Delete the .db file if corrupted, or check file permissions.")
+        return False
+
+def create_default_admin():
+    """Create a default admin user if none exists"""
+    try:
+        # Check if any admin exists
+        admin_exists = User.query.filter_by(is_admin=True).first()
+        if admin_exists:
+            print("✅ Admin user already exists!")
+            return True
+        
+        # Create default admin
+        admin_user = User(
+            email='admin@youthclub.com',
+            full_name='Admin User',
+            user_type='member',
+            university='System Administration',
+            university_country='Global',
+            major='System Administration',
+            bio='System Administrator for Uzbek Global Network',
+            is_admin=True,
+            is_active=True,
+            is_verified=True,
+            date_joined=datetime.utcnow()
+        )
+        
+        admin_user.set_password('admin123')  # Default password - should be changed
+        
+        db.session.add(admin_user)
+        db.session.commit()
+        
+        print("✅ Default admin user created!")
+        print("📧 Email: admin@youthclub.com")
+        print("🔑 Password: admin123")
+        print("⚠️  Please change the default password after first login!")
+        return True
+    except Exception as e:
+        print(f"❌ Error creating default admin: {e}")
+        return False
+
 def initialize_database():
     """Initialize database tables on first request"""
     try:
@@ -239,7 +297,19 @@ def index():
             user_type='member'
         ).filter(User.photo_filename.isnot(None)).limit(8).all()
         
-        # ... (rest of queries remain the same)
+        # Get hero members for the hero section (limit to 30 members)
+        hero_members = User.query.filter_by(
+            is_active=True, 
+            is_admin=False, 
+            user_type='member'
+        ).order_by(User.date_joined.desc()).limit(30).all()
+        
+        # Get featured companies for the trusted by section (limit to 10 companies)
+        featured_companies = User.query.filter_by(
+            is_active=True, 
+            is_admin=False, 
+            user_type='company'
+        ).filter(User.photo_filename.isnot(None)).limit(10).all()
         
         # Get statistics for the stats panel
         total_members = User.query.filter_by(is_active=True, is_admin=False).count()
