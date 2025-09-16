@@ -147,15 +147,17 @@ def initialize_database():
         success = init_db()
         if success:
             create_default_admin()
+            print("✅ Database initialization completed successfully!")
         else:
-            raise RuntimeError("Database initialization failed - check logs")
+            print("⚠️  Database initialization had issues but continuing...")
     except Exception as e:
         print(f"❌ CRITICAL: Error during database initialization: {e}")
         print("💡 Fix: Check database URI, permissions, and run 'flask create_admin' manually if needed.")
         if app.debug:  # In dev, don't crash, but warn
             print("⚠️  App continuing in broken state - queries will fail!")
         else:
-            raise  # In prod, crash to alert
+            print("⚠️  Production: App continuing despite database issues - will retry on first request")
+            # Don't crash in production, let the app start and handle errors gracefully
 
 # Database initialization will be moved after User class definition
 
@@ -337,10 +339,15 @@ def index():
         if "no such table: user" in str(e):
             print("⚠️  Table missing - reinitializing database...")
             with app.app_context():
-                init_db()
-                create_default_admin()
-            flash('Database was initialized. Please refresh the page.', 'info')
-            return redirect(url_for('index'))
+                try:
+                    init_db()
+                    create_default_admin()
+                    flash('Database was initialized. Please refresh the page.', 'info')
+                    return redirect(url_for('index'))
+                except Exception as init_error:
+                    print(f"❌ Failed to reinitialize database: {init_error}")
+                    flash('Database initialization failed. Please contact support.', 'error')
+                    return render_template('index.html', featured_members=[], hero_members=[], featured_companies=[], stats={'total_members': 0, 'unique_countries': 0, 'success_rate': 0})
         else:
             raise  # Re-raise other errors
 
