@@ -79,6 +79,16 @@ def get_locale():
 
 babel.init_app(app, locale_selector=get_locale)
 
+# Initialize database on app startup
+@app.before_first_request
+def initialize_database():
+    """Initialize database tables on first request"""
+    try:
+        init_db()
+        create_default_admin()
+    except Exception as e:
+        print(f"❌ Error during database initialization: {e}")
+
 # User model
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -579,6 +589,54 @@ def admin_make_admin(user_id):
     flash(f'{user.full_name or user.company_name} is now an admin!', 'success')
     return redirect(url_for('admin_user_detail', user_id=user_id))
 
+def init_db():
+    """Initialize database tables"""
+    try:
+        db.create_all()
+        print("✅ Database tables created successfully!")
+        return True
+    except Exception as e:
+        print(f"❌ Error creating database tables: {e}")
+        return False
+
+def create_default_admin():
+    """Create a default admin user if none exists"""
+    try:
+        # Check if any admin exists
+        admin_exists = User.query.filter_by(is_admin=True).first()
+        if admin_exists:
+            print("✅ Admin user already exists!")
+            return True
+        
+        # Create default admin
+        admin_user = User(
+            email='admin@youthclub.com',
+            full_name='Admin User',
+            user_type='member',
+            university='System Administration',
+            university_country='Global',
+            major='System Administration',
+            bio='System Administrator for Uzbek Global Network',
+            is_admin=True,
+            is_active=True,
+            is_verified=True,
+            date_joined=datetime.utcnow()
+        )
+        
+        admin_user.set_password('admin123')  # Default password - should be changed
+        
+        db.session.add(admin_user)
+        db.session.commit()
+        
+        print("✅ Default admin user created!")
+        print("📧 Email: admin@youthclub.com")
+        print("🔑 Password: admin123")
+        print("⚠️  Please change the default password after first login!")
+        return True
+    except Exception as e:
+        print(f"❌ Error creating default admin: {e}")
+        return False
+
 # Flask CLI commands
 @app.cli.command()
 def create_admin():
@@ -634,5 +692,8 @@ def create_admin():
 
 if __name__ == '__main__':
     with app.app_context():
-        db.create_all()
+        # Initialize database
+        init_db()
+        # Create default admin if needed
+        create_default_admin()
     app.run(debug=True, port=5001)
