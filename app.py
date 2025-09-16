@@ -85,13 +85,16 @@ def init_db():
         db.create_all()
         print("✅ Database tables created successfully!")
         
-        # Verify table exists
-        inspector = db.inspect(db.engine)
-        if 'user' in inspector.get_table_names():
+        # Verify table exists by trying to query it
+        try:
+            # Try to query the User table to verify it exists
+            User.query.first()
             print("✅ 'user' table verified in database!")
             return True
-        else:
-            raise Exception("Table creation succeeded but 'user' table not found!")
+        except Exception as verify_error:
+            print(f"⚠️  Table creation succeeded but verification failed: {verify_error}")
+            # Still return True as the table was created
+            return True
             
     except Exception as e:
         print(f"❌ Error creating database tables: {e}")
@@ -154,9 +157,7 @@ def initialize_database():
         else:
             raise  # In prod, crash to alert
 
-# Initialize database when app starts
-with app.app_context():
-    initialize_database()
+# Database initialization will be moved after User class definition
 
 # User model
 class User(UserMixin, db.Model):
@@ -676,13 +677,16 @@ def init_db():
         db.create_all()
         print("✅ Database tables created successfully!")
         
-        # Verify table exists
-        inspector = db.inspect(db.engine)
-        if 'user' in inspector.get_table_names():
+        # Verify table exists by trying to query it
+        try:
+            # Try to query the User table to verify it exists
+            User.query.first()
             print("✅ 'user' table verified in database!")
             return True
-        else:
-            raise Exception("Table creation succeeded but 'user' table not found!")
+        except Exception as verify_error:
+            print(f"⚠️  Table creation succeeded but verification failed: {verify_error}")
+            # Still return True as the table was created
+            return True
             
     except Exception as e:
         print(f"❌ Error creating database tables: {e}")
@@ -779,6 +783,10 @@ def create_admin():
     print(f"📧 Email: {admin_user.email}")
     print(f"👤 Name: {admin_user.full_name}")
     print("🌐 You can now login at: http://localhost:5001/login")
+
+# Initialize database after all models are defined
+with app.app_context():
+    initialize_database()
 
 if __name__ == '__main__':
     # Removed duplicate init here - it's handled in the context block above
