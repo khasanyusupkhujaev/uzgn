@@ -207,11 +207,11 @@ function initMembersCarousel() {
     
     // Get member cards from the DOM (already rendered by server)
     const memberCards = carouselTrack.querySelectorAll('.member-card-carousel');
-    const memberCount = memberCards.length / 2; // Divide by 2 because we duplicate for seamless loop
+    const memberCount = memberCards.length;
     
-    // Create member cards (this function is now simplified since cards are server-rendered)
+    // Create member cards (already rendered by server)
     function createMemberCards() {
-        // Cards are already created by the server, just ensure proper setup
+        // Cards are already created by the server, no need to clone
         if (memberCards.length === 0) return;
     }
     
@@ -395,6 +395,11 @@ function initCountryDropdowns() {
         function selectCountry(country) {
             input.value = country;
             closeDropdown();
+            
+            // Trigger university search when country is selected
+            if (window.triggerUniversitySearch) {
+                window.triggerUniversitySearch(country);
+            }
         }
         
         // Open dropdown
@@ -494,6 +499,14 @@ function initUniversityDropdowns() {
         return;
     }
     
+    // Make university search function globally available
+    window.triggerUniversitySearch = async function(country) {
+        if (country && country !== currentCountry) {
+            console.log(`Country selected: ${country}, triggering university search...`);
+            await fetchUniversities(country);
+        }
+    };
+    
     const input = universityDropdown.querySelector('.university-input');
     const list = universityDropdown.querySelector('.university-dropdown-list');
     const arrow = universityDropdown.querySelector('.university-dropdown-arrow');
@@ -506,107 +519,119 @@ function initUniversityDropdowns() {
     let currentCountry = '';
     let isLoading = false;
     
-    // University API base URL
-    const API_BASE_URL = 'http://universities.hipolabs.com/search';
+    // Local universities data
+    let allUniversities = [];
+    let universitiesLoaded = false;
     
-    // Fallback university data for common countries
-    const FALLBACK_UNIVERSITIES = {
-        'United States': [
-            'Harvard University', 'Stanford University', 'Massachusetts Institute of Technology',
-            'University of California, Berkeley', 'Yale University', 'Princeton University',
-            'Columbia University', 'University of Chicago', 'California Institute of Technology',
-            'University of Pennsylvania', 'Johns Hopkins University', 'Northwestern University',
-            'Duke University', 'Dartmouth College', 'Brown University', 'Cornell University',
-            'Rice University', 'Vanderbilt University', 'Washington University in St. Louis',
-            'Emory University', 'Georgetown University', 'Carnegie Mellon University',
-            'University of California, Los Angeles', 'University of Michigan', 'University of Virginia',
-            'University of North Carolina at Chapel Hill', 'New York University', 'University of Southern California',
-            'University of Texas at Austin', 'Boston University', 'Tulane University',
-            'University of Wisconsin-Madison', 'University of Illinois at Urbana-Champaign',
-            'Ohio State University', 'Pennsylvania State University', 'University of Florida',
-            'University of Georgia', 'University of Washington', 'University of Oregon',
-            'Arizona State University', 'University of Arizona', 'University of Colorado Boulder'
-        ],
-        'United Kingdom': [
-            'University of Oxford', 'University of Cambridge', 'Imperial College London',
-            'London School of Economics and Political Science', 'University College London',
-            'University of Edinburgh', 'King\'s College London', 'University of Manchester',
-            'University of Bristol', 'University of Warwick', 'University of Glasgow',
-            'University of Birmingham', 'University of Sheffield', 'University of Leeds',
-            'University of Liverpool', 'University of Nottingham', 'University of Southampton',
-            'University of York', 'University of Durham', 'University of Exeter',
-            'University of Bath', 'University of Sussex', 'University of Lancaster',
-            'University of Leicester', 'University of Reading', 'University of Surrey',
-            'University of East Anglia', 'University of Kent', 'University of Essex',
-            'University of Hull', 'University of Bradford', 'University of Salford'
-        ],
-        'Canada': [
-            'University of Toronto', 'University of British Columbia', 'McGill University',
-            'University of Alberta', 'McMaster University', 'University of Waterloo',
-            'Western University', 'Queen\'s University', 'University of Calgary',
-            'Simon Fraser University', 'University of Ottawa', 'University of Montreal',
-            'University of Manitoba', 'Dalhousie University', 'University of Saskatchewan',
-            'Carleton University', 'University of Victoria', 'Concordia University',
-            'York University', 'University of Guelph', 'Memorial University of Newfoundland',
-            'University of New Brunswick', 'Brock University', 'Trent University',
-            'University of Windsor', 'Ryerson University', 'University of Regina'
-        ],
-        'Germany': [
-            'Technical University of Munich', 'Ludwig Maximilian University of Munich',
-            'Heidelberg University', 'Karlsruhe Institute of Technology', 'Humboldt University of Berlin',
-            'Free University of Berlin', 'RWTH Aachen University', 'University of Stuttgart',
-            'University of Hamburg', 'University of Cologne', 'University of Frankfurt',
-            'University of Bonn', 'University of Göttingen', 'University of Tübingen',
-            'University of Freiburg', 'University of Würzburg', 'University of Münster',
-            'University of Erlangen-Nuremberg', 'University of Kiel', 'University of Mainz'
-        ],
-        'France': [
-            'Sorbonne University', 'École Polytechnique', 'École Normale Supérieure',
-            'University of Paris-Saclay', 'Sciences Po', 'HEC Paris',
-            'École des Ponts ParisTech', 'University of Lyon', 'University of Strasbourg',
-            'University of Aix-Marseille', 'University of Toulouse', 'University of Lille',
-            'University of Bordeaux', 'University of Montpellier', 'University of Rennes',
-            'University of Nantes', 'University of Grenoble', 'University of Nancy'
-        ],
-        'Australia': [
-            'University of Melbourne', 'University of Sydney', 'Australian National University',
-            'University of Queensland', 'Monash University', 'University of New South Wales',
-            'University of Western Australia', 'University of Adelaide', 'University of Technology Sydney',
-            'Queensland University of Technology', 'Macquarie University', 'Griffith University',
-            'Deakin University', 'University of Wollongong', 'Curtin University',
-            'University of South Australia', 'La Trobe University', 'Flinders University'
-        ],
-        'Japan': [
-            'University of Tokyo', 'Kyoto University', 'Osaka University',
-            'Tohoku University', 'Nagoya University', 'Kyushu University',
-            'Hokkaido University', 'Tokyo Institute of Technology', 'Waseda University',
-            'Keio University', 'Hitotsubashi University', 'Tokyo Medical and Dental University',
-            'Chiba University', 'Kanazawa University', 'Okayama University'
-        ],
-        'China': [
-            'Tsinghua University', 'Peking University', 'Fudan University',
-            'Shanghai Jiao Tong University', 'Zhejiang University', 'University of Science and Technology of China',
-            'Nanjing University', 'Sun Yat-sen University', 'Huazhong University of Science and Technology',
-            'Xi\'an Jiaotong University', 'Harbin Institute of Technology', 'Tongji University',
-            'Beijing Normal University', 'Tianjin University', 'Southeast University'
-        ],
-        'India': [
-            'Indian Institute of Technology Bombay', 'Indian Institute of Technology Delhi',
-            'Indian Institute of Technology Madras', 'Indian Institute of Science',
-            'Indian Institute of Technology Kanpur', 'Indian Institute of Technology Kharagpur',
-            'University of Delhi', 'Jawaharlal Nehru University', 'University of Mumbai',
-            'University of Calcutta', 'Banaras Hindu University', 'Aligarh Muslim University',
-            'University of Pune', 'Anna University', 'Jadavpur University'
-        ],
-        'Brazil': [
-            'University of São Paulo', 'State University of Campinas', 'Federal University of Rio de Janeiro',
-            'Federal University of Minas Gerais', 'University of Brasília', 'Federal University of São Paulo',
-            'Pontifical Catholic University of Rio de Janeiro', 'Federal University of Rio Grande do Sul',
-            'University of São Paulo', 'Federal University of Bahia', 'Federal University of Paraná'
-        ]
-    };
+    // Get country name variations for better matching
+    function getCountryVariations(country) {
+        const variations = {
+            'russia': ['russia', 'russian federation'],
+            'united states': ['united states', 'usa', 'us', 'united states of america'],
+            'united kingdom': ['united kingdom', 'uk', 'great britain', 'britain'],
+            'south korea': ['south korea', 'korea', 'republic of korea'],
+            'north korea': ['north korea', 'democratic people\'s republic of korea'],
+            'czech republic': ['czech republic', 'czechia'],
+            'united arab emirates': ['united arab emirates', 'uae'],
+            'bosnia and herzegovina': ['bosnia and herzegovina', 'bosnia'],
+            'trinidad and tobago': ['trinidad and tobago', 'trinidad'],
+            'saint vincent and the grenadines': ['saint vincent and the grenadines', 'saint vincent'],
+            'saint kitts and nevis': ['saint kitts and nevis', 'saint kitts'],
+            'saint lucia': ['saint lucia'],
+            'papua new guinea': ['papua new guinea', 'papua'],
+            'marshall islands': ['marshall islands', 'marshall'],
+            'solomon islands': ['solomon islands', 'solomon'],
+            'cook islands': ['cook islands', 'cook'],
+            'cayman islands': ['cayman islands', 'cayman'],
+            'virgin islands': ['virgin islands', 'british virgin islands', 'us virgin islands'],
+            'falkland islands': ['falkland islands', 'falklands'],
+            'faroe islands': ['faroe islands', 'faroe'],
+            'isle of man': ['isle of man', 'man'],
+            'guernsey': ['guernsey'],
+            'jersey': ['jersey'],
+            'gibraltar': ['gibraltar'],
+            'bermuda': ['bermuda'],
+            'greenland': ['greenland'],
+            'puerto rico': ['puerto rico'],
+            'american samoa': ['american samoa', 'samoa'],
+            'guam': ['guam'],
+            'northern mariana islands': ['northern mariana islands', 'mariana islands'],
+            'us minor outlying islands': ['us minor outlying islands', 'minor outlying islands'],
+            'british indian ocean territory': ['british indian ocean territory', 'biot'],
+            'south georgia and the south sandwich islands': ['south georgia and the south sandwich islands', 'south georgia'],
+            'heard island and mcdonald islands': ['heard island and mcdonald islands', 'heard island'],
+            'french southern and antarctic lands': ['french southern and antarctic lands', 'taaf'],
+            'antarctica': ['antarctica'],
+            'bouvet island': ['bouvet island', 'bouvet'],
+            'svalbard and jan mayen': ['svalbard and jan mayen', 'svalbard'],
+            'christmas island': ['christmas island'],
+            'cocos islands': ['cocos islands', 'keeling islands'],
+            'norfolk island': ['norfolk island', 'norfolk'],
+            'pitcairn islands': ['pitcairn islands', 'pitcairn'],
+            'tokelau': ['tokelau'],
+            'niue': ['niue'],
+            'tuvalu': ['tuvalu'],
+            'nauru': ['nauru'],
+            'palau': ['palau'],
+            'micronesia': ['micronesia', 'federated states of micronesia'],
+            'kiribati': ['kiribati'],
+            'vanuatu': ['vanuatu'],
+            'samoa': ['samoa', 'western samoa'],
+            'tonga': ['tonga'],
+            'fiji': ['fiji'],
+            'new zealand': ['new zealand'],
+            'australia': ['australia'],
+            'papua new guinea': ['papua new guinea', 'papua'],
+            'solomon islands': ['solomon islands', 'solomon'],
+            'vanuatu': ['vanuatu'],
+            'new caledonia': ['new caledonia'],
+            'french polynesia': ['french polynesia', 'polynesia'],
+            'wallis and futuna': ['wallis and futuna', 'wallis'],
+            'cook islands': ['cook islands', 'cook'],
+            'niue': ['niue'],
+            'tokelau': ['tokelau'],
+            'american samoa': ['american samoa', 'samoa'],
+            'guam': ['guam'],
+            'northern mariana islands': ['northern mariana islands', 'mariana islands'],
+            'marshall islands': ['marshall islands', 'marshall'],
+            'palau': ['palau'],
+            'micronesia': ['micronesia', 'federated states of micronesia'],
+            'kiribati': ['kiribati'],
+            'nauru': ['nauru'],
+            'tuvalu': ['tuvalu'],
+            'samoa': ['samoa', 'western samoa'],
+            'tonga': ['tonga'],
+            'fiji': ['fiji'],
+            'new zealand': ['new zealand'],
+            'australia': ['australia']
+        };
+        
+        const lowerCountry = country.toLowerCase();
+        return variations[lowerCountry] || [country];
+    }
     
-    // Fetch universities by country
+    // Load universities from local JSON file
+    async function loadUniversities() {
+        if (universitiesLoaded) return allUniversities;
+        
+        try {
+            const response = await fetch('/static/world_universities_and_domains.json');
+            if (response.ok) {
+                allUniversities = await response.json();
+                universitiesLoaded = true;
+                console.log(`Loaded ${allUniversities.length} universities from local file`);
+            } else {
+                throw new Error('Failed to load universities file');
+            }
+        } catch (error) {
+            console.error('Error loading universities:', error);
+            allUniversities = [];
+        }
+        
+        return allUniversities;
+    }
+    
+    // Fetch universities by country from local data
     async function fetchUniversities(country) {
         if (!country || country === currentCountry) {
             return universities;
@@ -616,43 +641,30 @@ function initUniversityDropdowns() {
         showLoading();
     
         try {
-            // Try to fetch from API first
-            const response = await fetch(`${API_BASE_URL}?country=${encodeURIComponent(country)}`, {
-                method: 'GET',
-                mode: 'cors',
-                headers: {
-                    'Accept': 'application/json',
-                }
-            });
+            // Load universities if not already loaded
+            await loadUniversities();
             
-            if (response.ok) {
-                const data = await response.json();
-                universities = data.map(uni => ({
-                    name: uni.name,
-                    country: uni.country,
-                    domains: uni.domains || [],
-                    web_pages: uni.web_pages || []
-                }));
-                currentCountry = country;
-            } else {
-                throw new Error('API request failed');
-            }
+            // Filter universities by country (handle common variations)
+            const countryVariations = getCountryVariations(country);
+            const filteredUniversities = allUniversities.filter(uni => 
+                uni.country && countryVariations.some(variation => 
+                    uni.country.toLowerCase() === variation.toLowerCase()
+                )
+            );
+            
+            universities = filteredUniversities.map(uni => ({
+                name: uni.name,
+                country: uni.country,
+                domains: uni.domains || [],
+                web_pages: uni.web_pages || []
+            }));
+            
+            currentCountry = country;
+            console.log(`Found ${universities.length} universities for ${country}`);
+            
         } catch (error) {
-            console.log('API failed, using fallback data:', error.message);
-            
-            // Fallback to local data
-            const fallbackList = FALLBACK_UNIVERSITIES[country] || [];
-            if (fallbackList.length > 0) {
-                universities = fallbackList.map(name => ({
-                    name: name,
-                    country: country,
-                    domains: [],
-                    web_pages: []
-                }));
-                currentCountry = country;
-            } else {
-                universities = []; // No universities for this country
-            }
+            console.error('Error fetching universities:', error);
+            universities = [];
         }
     
         isLoading = false;
@@ -660,7 +672,7 @@ function initUniversityDropdowns() {
         if (universities.length === 0) {
             showError(`No universities found for ${country}. Please type to search manually.`);
         } else {
-            populateDropdown(); // Show the universities
+            populateDropdown();
         }
         
         return universities;
@@ -679,7 +691,6 @@ function initUniversityDropdowns() {
     // Show no results
     function showNoResults() {
         if (universities.length > 0) {
-            // Show the fallback universities
             populateDropdown(universities);
         } else {
             list.innerHTML = '<div class="university-no-results">No universities found. Try typing to search.</div>';
@@ -813,15 +824,35 @@ function initUniversityDropdowns() {
         }
     });
     
-    // Watch for country changes
-    countryInput.addEventListener('input', async (e) => {
-        const country = e.target.value;
-        if (country && country !== currentCountry) {
-            universities = await fetchUniversities(country);
-            if (isOpen) {
-                populateDropdown();
-            }
+    // Watch for country changes - use a more reliable method
+    let lastCountryValue = '';
+    
+    // Check for country changes periodically and on focus/blur
+    function checkCountryChange() {
+        const currentValue = countryInput.value;
+        if (currentValue && currentValue !== lastCountryValue && currentValue !== currentCountry) {
+            lastCountryValue = currentValue;
+            fetchUniversities(currentValue);
         }
+    }
+    
+    // Listen for input changes but debounce them
+    let countryChangeTimeout;
+    countryInput.addEventListener('input', (e) => {
+        clearTimeout(countryChangeTimeout);
+        countryChangeTimeout = setTimeout(() => {
+            checkCountryChange();
+        }, 500); // Wait 500ms after user stops typing
+    });
+    
+    // Also listen for when the input loses focus (user selected from dropdown)
+    countryInput.addEventListener('blur', () => {
+        checkCountryChange();
+    });
+    
+    // Listen for when the input gets focus (user might have selected from dropdown)
+    countryInput.addEventListener('focus', () => {
+        checkCountryChange();
     });
     
     // Close dropdown when clicking outside
