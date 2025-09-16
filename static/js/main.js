@@ -41,8 +41,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Initialize country dropdowns
     initCountryDropdowns();
     
-    // Initialize university dropdowns
-    initUniversityDropdowns();
+    // Initialize university dropdowns (only if on registration page)
+    if (document.querySelector('.university-dropdown')) {
+        initUniversityDropdowns();
+    }
 });
 
 function getPasswordStrength(password) {
@@ -487,7 +489,10 @@ function initUniversityDropdowns() {
     const universityDropdown = document.querySelector('.university-dropdown');
     const countryInput = document.querySelector('#university_country');
     
-    if (!universityDropdown || !countryInput) return;
+    if (!universityDropdown || !countryInput) {
+        console.log('University dropdown or country input not found');
+        return;
+    }
     
     const input = universityDropdown.querySelector('.university-input');
     const list = universityDropdown.querySelector('.university-dropdown-list');
@@ -603,7 +608,9 @@ function initUniversityDropdowns() {
     
     // Fetch universities by country
     async function fetchUniversities(country) {
-        if (!country || country === currentCountry) return universities;
+        if (!country || country === currentCountry) {
+            return universities;
+        }
     
         isLoading = true;
         showLoading();
@@ -653,7 +660,7 @@ function initUniversityDropdowns() {
         if (universities.length === 0) {
             showError(`No universities found for ${country}. Please type to search manually.`);
         } else {
-            showNoResults(); // This will show the universities
+            populateDropdown(); // Show the universities
         }
         
         return universities;

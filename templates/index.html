@@ -225,27 +225,29 @@
                             </div>
                         </div>
                         {% endfor %}
-                        <!-- Duplicate for seamless loop -->
-                        {% for member in featured_members %}
-                        <div class="member-card-carousel">
-                            <img src="{{ url_for('static', filename='uploads/' + member.photo_filename) if member.photo_filename else url_for('static', filename='images/president.JPG') }}" 
-                                 alt="{{ member.full_name or 'Member' }}" class="member-photo">
-                            <h5 class="member-name">{{ member.full_name or 'Anonymous Member' }}</h5>
-                            <p class="member-title">{{ member.current_position or member.major or 'Student' }}</p>
-                            <p class="member-university">{{ member.university or 'University' }}</p>
-                            <div class="member-tags">
-                                {% if member.major %}
-                                    <span class="member-tag">{{ member.major }}</span>
-                                {% endif %}
-                                {% if member.university_country %}
-                                    <span class="member-tag">{{ member.university_country }}</span>
-                                {% endif %}
-                                {% if member.current_company %}
-                                    <span class="member-tag">{{ member.current_company }}</span>
-                                {% endif %}
+                        <!-- Duplicate for seamless loop - only if we have enough members -->
+                        {% if featured_members|length > 1 %}
+                            {% for member in featured_members %}
+                            <div class="member-card-carousel">
+                                <img src="{{ url_for('static', filename='uploads/' + member.photo_filename) if member.photo_filename else url_for('static', filename='images/president.JPG') }}" 
+                                     alt="{{ member.full_name or 'Member' }}" class="member-photo">
+                                <h5 class="member-name">{{ member.full_name or 'Anonymous Member' }}</h5>
+                                <p class="member-title">{{ member.current_position or member.major or 'Student' }}</p>
+                                <p class="member-university">{{ member.university or 'University' }}</p>
+                                <div class="member-tags">
+                                    {% if member.major %}
+                                        <span class="member-tag">{{ member.major }}</span>
+                                    {% endif %}
+                                    {% if member.university_country %}
+                                        <span class="member-tag">{{ member.university_country }}</span>
+                                    {% endif %}
+                                    {% if member.current_company %}
+                                        <span class="member-tag">{{ member.current_company }}</span>
+                                    {% endif %}
+                                </div>
                             </div>
-                        </div>
-                        {% endfor %}
+                            {% endfor %}
+                        {% endif %}
                     {% else %}
                         <!-- Fallback sample members when no real members exist -->
                         <div class="member-card-carousel">
