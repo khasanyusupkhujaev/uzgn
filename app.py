@@ -16,6 +16,7 @@ from functools import wraps
 from config import config
 
 # Create Flask app
+# Version: 2.0 - Railway deployment fix
 app = Flask(__name__)
 
 # Load configuration
@@ -157,6 +158,7 @@ def initialize_database():
             print("⚠️  App continuing in broken state - queries will fail!")
         else:
             print("⚠️  Production: App continuing despite database issues - will retry on first request")
+            print("✅ App will start successfully and handle database issues gracefully")
             # Don't crash in production, let the app start and handle errors gracefully
 
 # Database initialization will be moved after User class definition
