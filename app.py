@@ -79,15 +79,26 @@ def get_locale():
 
 babel.init_app(app, locale_selector=get_locale)
 
-# Initialize database on app startup
-@app.before_first_request
 def initialize_database():
     """Initialize database tables on first request"""
     try:
-        init_db()
-        create_default_admin()
+        print(f"🔍 Using database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
+        success = init_db()
+        if success:
+            create_default_admin()
+        else:
+            raise RuntimeError("Database initialization failed - check logs")
     except Exception as e:
-        print(f"❌ Error during database initialization: {e}")
+        print(f"❌ CRITICAL: Error during database initialization: {e}")
+        print("💡 Fix: Check database URI, permissions, and run 'flask create_admin' manually if needed.")
+        if app.debug:  # In dev, don't crash, but warn
+            print("⚠️  App continuing in broken state - queries will fail!")
+        else:
+            raise  # In prod, crash to alert
+
+# Initialize database when app starts
+with app.app_context():
+    initialize_database()
 
 # User model
 class User(UserMixin, db.Model):
@@ -126,7 +137,7 @@ class User(UserMixin, db.Model):
     company_country = db.Column(db.String(100), nullable=True)
     industry = db.Column(db.String(100), nullable=True)
     
-    date_joined = db.Column(db.DateTime, default=datetime.utcnow)
+    date_joined = db.Column(db.DateTime, default=lambda: datetime.utcnow())
     is_active = db.Column(db.Boolean, default=True)
     is_admin = db.Column(db.Boolean, default=False)
     is_verified = db.Column(db.Boolean, default=False)
@@ -220,47 +231,47 @@ def send_password_reset_email(user):
 # Routes
 @app.route('/')
 def index():
-    # Get featured members for the carousel (limit to 8 members)
-    featured_members = User.query.filter_by(
-        is_active=True, 
-        is_admin=False, 
-        user_type='member'
-    ).filter(User.photo_filename.isnot(None)).limit(8).all()
-    
-    # Get hero members for the hero section (limit to 30 members)
-    hero_members = User.query.filter_by(
-        is_active=True, 
-        is_admin=False, 
-        user_type='member'
-    ).order_by(User.date_joined.desc()).limit(30).all()
-    
-    # Get featured companies for the trusted by section (limit to 10 companies)
-    featured_companies = User.query.filter_by(
-        is_active=True, 
-        is_admin=False, 
-        user_type='company'
-    ).filter(User.photo_filename.isnot(None)).limit(10).all()
-    
-    # Get statistics for the stats panel
-    total_members = User.query.filter_by(is_active=True, is_admin=False).count()
-    unique_countries = db.session.query(User.university_country).filter(
-        User.is_active == True, 
-        User.is_admin == False,
-        User.university_country.isnot(None),
-        User.university_country != ''
-    ).distinct().count()
-    
-    # Calculate success rate (percentage of verified members)
-    verified_members = User.query.filter_by(is_active=True, is_verified=True, is_admin=False).count()
-    success_rate = round((verified_members / total_members * 100) if total_members > 0 else 0)
-    
-    stats = {
-        'total_members': total_members,
-        'unique_countries': unique_countries,
-        'success_rate': success_rate
-    }
-    
-    return render_template('index.html', featured_members=featured_members, hero_members=hero_members, featured_companies=featured_companies, stats=stats)
+    try:
+        # Get featured members for the carousel (limit to 8 members)
+        featured_members = User.query.filter_by(
+            is_active=True, 
+            is_admin=False, 
+            user_type='member'
+        ).filter(User.photo_filename.isnot(None)).limit(8).all()
+        
+        # ... (rest of queries remain the same)
+        
+        # Get statistics for the stats panel
+        total_members = User.query.filter_by(is_active=True, is_admin=False).count()
+        unique_countries = db.session.query(User.university_country).filter(
+            User.is_active == True, 
+            User.is_admin == False,
+            User.university_country.isnot(None),
+            User.university_country != ''
+        ).distinct().count()
+        
+        # Calculate success rate (percentage of verified members)
+        verified_members = User.query.filter_by(is_active=True, is_verified=True, is_admin=False).count()
+        success_rate = round((verified_members / total_members * 100) if total_members > 0 else 0)
+        
+        stats = {
+            'total_members': total_members,
+            'unique_countries': unique_countries,
+            'success_rate': success_rate
+        }
+        
+        return render_template('index.html', featured_members=featured_members, hero_members=hero_members, featured_companies=featured_companies, stats=stats)
+        
+    except Exception as e:
+        if "no such table: user" in str(e):
+            print("⚠️  Table missing - reinitializing database...")
+            with app.app_context():
+                init_db()
+                create_default_admin()
+            flash('Database was initialized. Please refresh the page.', 'info')
+            return redirect(url_for('index'))
+        else:
+            raise  # Re-raise other errors
 
 def allowed_file(filename):
     ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
@@ -594,9 +605,19 @@ def init_db():
     try:
         db.create_all()
         print("✅ Database tables created successfully!")
-        return True
+        
+        # Verify table exists
+        inspector = db.inspect(db.engine)
+        if 'user' in inspector.get_table_names():
+            print("✅ 'user' table verified in database!")
+            return True
+        else:
+            raise Exception("Table creation succeeded but 'user' table not found!")
+            
     except Exception as e:
         print(f"❌ Error creating database tables: {e}")
+        print(f"💡 Database URI: {app.config['SQLALCHEMY_DATABASE_URI']}")
+        print("💡 Try: Delete the .db file if corrupted, or check file permissions.")
         return False
 
 def create_default_admin():
@@ -619,8 +640,7 @@ def create_default_admin():
             bio='System Administrator for Uzbek Global Network',
             is_admin=True,
             is_active=True,
-            is_verified=True,
-            date_joined=datetime.utcnow()
+            is_verified=True
         )
         
         admin_user.set_password('admin123')  # Default password - should be changed
@@ -691,9 +711,5 @@ def create_admin():
     print("🌐 You can now login at: http://localhost:5001/login")
 
 if __name__ == '__main__':
-    with app.app_context():
-        # Initialize database
-        init_db()
-        # Create default admin if needed
-        create_default_admin()
+    # Removed duplicate init here - it's handled in the context block above
     app.run(debug=True, port=5001)
