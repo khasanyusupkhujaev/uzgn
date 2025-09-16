@@ -1,0 +1,741 @@
+# Uzbek translations for Youth Club Community
+# Copyright (C) 2025 Youth Club Community
+# This file is distributed under the same license as the Youth Club Community project.
+# FIRST AUTHOR <email@example.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Youth Club Community 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-01-12 16:00+0000\n"
+"PO-Revision-Date: 2025-01-12 16:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: uz\n"
+"Language-Team: uz <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# Navigation
+msgid "Home"
+msgstr "Bosh sahifa"
+
+msgid "Members"
+msgstr "A'zolar"
+
+msgid "Companies"
+msgstr "Kompaniyalar"
+
+msgid "Contact"
+msgstr "Aloqa"
+
+msgid "Login"
+msgstr "Kirish"
+
+msgid "Register"
+msgstr "Ro'yxatdan o'tish"
+
+msgid "Dashboard"
+msgstr "Boshqaruv paneli"
+
+msgid "Edit Profile"
+msgstr "Profilni tahrirlash"
+
+msgid "Logout"
+msgstr "Chiqish"
+
+msgid "Admin"
+msgstr "Admin"
+
+# Home page
+msgid "Top Universities"
+msgstr "Top Universitetlar"
+
+msgid "Youth Club Community"
+msgstr "Yoshlar Klubi Jamiyati"
+
+msgid "Connect with talented youth from top universities"
+msgstr "Yuqori universitetlardan kelgan iqtidorli yoshlar bilan bog'laning"
+
+msgid "Join Our Community"
+msgstr "Jamiyatimizga qo'shiling"
+
+msgid "View Members"
+msgstr "A'zolarni ko'rish"
+
+msgid "View Companies"
+msgstr "Kompaniyalarni ko'rish"
+
+# Registration
+msgid "Create Account"
+msgstr "Hisob yaratish"
+
+msgid "Member Registration"
+msgstr "A'zo ro'yxatdan o'tish"
+
+msgid "Company Registration"
+msgstr "Kompaniya ro'yxatdan o'tish"
+
+msgid "Email"
+msgstr "Elektron pochta"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Confirm Password"
+msgstr "Parolni tasdiqlash"
+
+msgid "Full Name"
+msgstr "To'liq ism"
+
+msgid "University Name"
+msgstr "Universitet nomi"
+
+msgid "University Country"
+msgstr "Universitet mamlakat"
+
+msgid "Major"
+msgstr "Mutaxassislik"
+
+msgid "Start Date"
+msgstr "Boshlanish sanasi"
+
+msgid "End Date"
+msgstr "Tugash sanasi"
+
+msgid "I am a current student"
+msgstr "Men hozirgi talabaman"
+
+msgid "Company"
+msgstr "Kompaniya"
+
+msgid "Position"
+msgstr "Lavozim"
+
+msgid "Bio"
+msgstr "Biografiya"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Profile Photo"
+msgstr "Profil rasmi"
+
+msgid "Company Name"
+msgstr "Kompaniya nomi"
+
+msgid "Country"
+msgstr "Mamlakat"
+
+msgid "Industry"
+msgstr "Soha"
+
+msgid "Company Logo"
+msgstr "Kompaniya logotipi"
+
+# Contact page
+msgid "Contact Us"
+msgstr "Biz bilan bog'laning"
+
+msgid "Get in touch with our community"
+msgstr "Jamiyatimiz bilan bog'laning"
+
+msgid "Contact Information"
+msgstr "Aloqa ma'lumotlari"
+
+msgid "Our Team"
+msgstr "Jamoamiz"
+
+msgid "Founder"
+msgstr "Asoschisi"
+
+msgid "Get Involved"
+msgstr "Qatnashing"
+
+msgid "Ready to join our community? Whether you're a student, graduate, or company, we'd love to have you as part of our network."
+msgstr "Jamiyatimizga qo'shilishga tayyormisiz? Talaba, bitiruvchi yoki kompaniya bo'lsangiz ham, sizni tarmog'imizning bir qismi sifatida ko'rishni istaymiz."
+
+# Language selector
+msgid "Language"
+msgstr "Til"
+
+msgid "English"
+msgstr "Ingliz tili"
+
+msgid "O'zbek"
+msgstr "O'zbek tili"
+
+# Additional translations
+msgid "Welcome to Youth Club"
+msgstr "Yoshlar Klubiga xush kelibsiz"
+
+msgid "A community of talented youth from top universities around the world"
+msgstr "Dunyoning yuqori universitetlaridan kelgan iqtidorli yoshlar jamiyati"
+
+msgid "Connect, collaborate, and grow together with like-minded individuals who are making a difference in their fields."
+msgstr "O'z sohalarida farq qilayotgan o'xshash fikrli odamlar bilan bog'laning, hamkorlik qiling va birga o'sing."
+
+msgid "Sign In"
+msgstr "Kirish"
+
+msgid "Go to Dashboard"
+msgstr "Boshqaruv paneliga o'tish"
+
+# Members page
+msgid "Our Members"
+msgstr "Bizning a'zolar"
+
+msgid "Discover talented individuals from top universities"
+msgstr "Yuqori universitetlardan kelgan iqtidorli shaxslarni kashf eting"
+
+msgid "View Profile"
+msgstr "Profilni ko'rish"
+
+msgid "No Members Yet"
+msgstr "Hali a'zolar yo'q"
+
+msgid "No members have registered yet. Check back later!"
+msgstr "Hali hech kim ro'yxatdan o'tmagan. Keyinroq qaytib keling!"
+
+# Companies page
+msgid "Our Partner Companies"
+msgstr "Bizning hamkor kompaniyalar"
+
+msgid "Discover the innovative companies we work with"
+msgstr "Biz bilan ishlayotgan innovatsion kompaniyalarni kashf eting"
+
+msgid "View Details"
+msgstr "Tafsilotlarni ko'rish"
+
+msgid "No Companies Yet"
+msgstr "Hali kompaniyalar yo'q"
+
+msgid "No companies have registered yet. Check back later!"
+msgstr "Hali hech qanday kompaniya ro'yxatdan o'tmagan. Keyinroq qaytib keling!"
+
+# Login page
+msgid "Sign In to Your Account"
+msgstr "Hisobingizga kiring"
+
+msgid "Enter your credentials to access your account"
+msgstr "Hisobingizga kirish uchun ma'lumotlaringizni kiriting"
+
+msgid "Remember Me"
+msgstr "Meni eslab qol"
+
+msgid "Don't have an account?"
+msgstr "Hisobingiz yo'qmi?"
+
+msgid "Forgot your password?"
+msgstr "Parolingizni unutdingizmi?"
+
+# Registration page
+msgid "Join Our Community"
+msgstr "Jamiyatimizga qo'shiling"
+
+msgid "Choose your registration type"
+msgstr "Ro'yxatdan o'tish turini tanlang"
+
+msgid "I am a student or graduate"
+msgstr "Men talaba yoki bitiruvchiman"
+
+msgid "I represent a company"
+msgstr "Men kompaniyani vakillik qilaman"
+
+msgid "Sections marked with * are mandatory, other sections are highly beneficial to fill"
+msgstr "* belgisi qo'yilgan bo'limlar majburiy, boshqa bo'limlarni to'ldirish juda foydali"
+
+msgid "When did you start university?"
+msgstr "Universitetga qachon kirdingiz?"
+
+msgid "When did you graduate?"
+msgstr "Qachon bitirdingiz?"
+
+msgid "Upload your profile photo (optional)"
+msgstr "Profil rasmingizni yuklang (ixtiyoriy)"
+
+msgid "Upload your company logo (optional)"
+msgstr "Kompaniya logotipingizni yuklang (ixtiyoriy)"
+
+msgid "Create Member Account"
+msgstr "A'zo hisobini yaratish"
+
+msgid "Create Company Account"
+msgstr "Kompaniya hisobini yaratish"
+
+msgid "Already have an account?"
+msgstr "Allaqachon hisobingiz bormi?"
+
+# Dashboard
+msgid "Welcome back"
+msgstr "Qaytganingiz bilan"
+
+msgid "Your Profile"
+msgstr "Sizning profilingiz"
+
+msgid "Edit your profile information"
+msgstr "Profil ma'lumotlaringizni tahrirlang"
+
+msgid "View All Members"
+msgstr "Barcha a'zolarni ko'rish"
+
+msgid "Browse our community members"
+msgstr "Jamiyat a'zolarimizni ko'rib chiqing"
+
+msgid "View All Companies"
+msgstr "Barcha kompaniyalarni ko'rish"
+
+msgid "Browse our partner companies"
+msgstr "Hamkor kompaniyalarimizni ko'rib chiqing"
+
+# Additional translations
+msgid "Welcome Back"
+msgstr "Qaytganingiz bilan"
+
+msgid "Sign in to your account"
+msgstr "Hisobingizga kiring"
+
+msgid "Email Address"
+msgstr "Elektron pochta manzili"
+
+msgid "Sign In"
+msgstr "Kirish"
+
+msgid "Join our community"
+msgstr "Jamiyatimizga qo'shiling"
+
+msgid "Quick Stats"
+msgstr "Tezkor statistikalar"
+
+msgid "Community"
+msgstr "Jamiyat"
+
+msgid "Connect with other members and explore opportunities."
+msgstr "Boshqa a'zolar bilan bog'laning va imkoniyatlarni o'rganing."
+
+msgid "Be the first to join our community!"
+msgstr "Jamiyatimizga qo'shilgan birinchi bo'ling!"
+
+msgid "Join Now"
+msgstr "Hozir qo'shiling"
+
+# Index page additional translations
+msgid "Top Universities"
+msgstr "Top Universitetlar"
+
+msgid "Members from prestigious universities worldwide, bringing diverse perspectives and expertise."
+msgstr "Dunyoning nufuzli universitetlaridan kelgan a'zolar, turli xil nuqtai nazarlar va tajriba bilan."
+
+msgid "Professional Network"
+msgstr "Professional tarmoq"
+
+msgid "Connect with professionals across various industries and build meaningful relationships."
+msgstr "Turli sohalardagi mutaxassislar bilan bog'laning va mazmunli munosabatlarni quring."
+
+msgid "Collaboration"
+msgstr "Hamkorlik"
+
+msgid "Work together on projects, share knowledge, and create opportunities for growth."
+msgstr "Loyihalar bo'yicha birga ishlang, bilim almashing va o'sish imkoniyatlarini yarating."
+
+msgid "Why Join Youth Club?"
+msgstr "Nima uchun Youth Club'ga qo'shilish kerak?"
+
+msgid "Access to a global network of talented individuals"
+msgstr "Dunyodagi iqtidorli shaxslar global tarmogiga kirish"
+
+msgid "Professional development opportunities"
+msgstr "Professional rivojlanish imkoniyatlari"
+
+msgid "Mentorship and career guidance"
+msgstr "Mentorlik va martaba yo'nalishi"
+
+msgid "Collaborative project opportunities"
+msgstr "Hamkorlik loyihalari imkoniyatlari"
+
+msgid "Knowledge sharing and learning"
+msgstr "Bilim almashish va o'rganish"
+
+msgid "Industry insights and trends"
+msgstr "Soha tahlillari va tendentsiyalari"
+
+msgid "Networking events and meetups"
+msgstr "Tarmoq tadbirlari va uchrashuvlar"
+
+msgid "Personal and professional growth"
+msgstr "Shaxsiy va professional o'sish"
+
+# Contact page additional translations
+msgid "Get Involved"
+msgstr "Qo'shiling"
+
+msgid "Ready to join our community? Whether you're a student, graduate, or company, we'd love to have you as part of our network."
+msgstr "Jamiyatimizga qo'shilishga tayyormisiz? Talaba, bitiruvchi yoki kompaniya bo'lsangiz ham, sizni tarmog'imizning bir qismi sifatida ko'rishni istaymiz."
+
+msgid "View Members"
+msgstr "A'zolarni ko'rish"
+
+msgid "View Companies"
+msgstr "Kompaniyalarni ko'rish"
+
+# Registration type selection page
+msgid "I am a..."
+msgstr "Men..."
+
+msgid "I am a student or graduate from a university"
+msgstr "Men universitet talabasi yoki bitiruvchisiman"
+
+msgid "I represent a company or organization"
+msgstr "Men kompaniya yoki tashkilotni vakillik qilaman"
+
+msgid "Already have an account?"
+msgstr "Allaqachon hisobingiz bormi?"
+
+msgid "Sign in here"
+msgstr "Bu yerda kiring"
+
+# Registration page
+msgid "Back"
+msgstr "Orqaga"
+
+msgid "Member Registration"
+msgstr "A'zo ro'yxatdan o'tish"
+
+msgid "Company Registration"
+msgstr "Kompaniya ro'yxatdan o'tish"
+
+msgid "Sections marked with * are mandatory, other sections are highly beneficial to fill."
+msgstr "* belgisi qo'yilgan bo'limlar majburiy, boshqa bo'limlarni to'ldirish juda foydali."
+
+msgid "Registering as:"
+msgstr "Ro'yxatdan o'tish turi:"
+
+msgid "Member"
+msgstr "A'zo"
+
+msgid "Company"
+msgstr "Kompaniya"
+
+msgid "Basic Information"
+msgstr "Asosiy ma'lumotlar"
+
+msgid "Email"
+msgstr "Elektron pochta"
+
+msgid "Full Name"
+msgstr "To'liq ism"
+
+msgid "Password"
+msgstr "Parol"
+
+msgid "Confirm Password"
+msgstr "Parolni tasdiqlang"
+
+msgid "Education Information"
+msgstr "Ta'lim ma'lumotlari"
+
+msgid "University Country"
+msgstr "Universitet mamlakat"
+
+msgid "University Name"
+msgstr "Universitet nomi"
+
+msgid "Major"
+msgstr "Mutaxassislik"
+
+msgid "Start Date"
+msgstr "Boshlanish sanasi"
+
+msgid "Select month and year"
+msgstr "Oy va yilni tanlang"
+
+msgid "When did you start university?"
+msgstr "Universitetga qachon kirdingiz?"
+
+msgid "End Date"
+msgstr "Tugash sanasi"
+
+msgid "When did you graduate?"
+msgstr "Qachon bitirdingiz?"
+
+msgid "I am a current student"
+msgstr "Men hozirgi talabaman"
+
+msgid "Employment Status"
+msgstr "Ishlash holati"
+
+msgid "Position"
+msgstr "Lavozim"
+
+msgid "Additional Information"
+msgstr "Qo'shimcha ma'lumotlar"
+
+msgid "Bio"
+msgstr "Biografiya"
+
+msgid "Tell us about yourself..."
+msgstr "O'zingiz haqingizda gapiring..."
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Profile Photo"
+msgstr "Profil rasmi"
+
+msgid "Optional: Upload a profile photo (PNG, JPG, JPEG, GIF)"
+msgstr "Ixtiyoriy: Profil rasmingizni yuklang (PNG, JPG, JPEG, GIF)"
+
+msgid "Company Information"
+msgstr "Kompaniya ma'lumotlari"
+
+msgid "Company Name"
+msgstr "Kompaniya nomi"
+
+msgid "Country"
+msgstr "Mamlakat"
+
+msgid "Industry"
+msgstr "Soha"
+
+msgid "e.g., Technology, Finance, Healthcare, etc."
+msgstr "masalan, Texnologiya, Moliya, Sog'liqni saqlash va boshqalar"
+
+msgid "Company Logo"
+msgstr "Kompaniya logotipi"
+
+msgid "Upload your company logo (optional)"
+msgstr "Kompaniya logotipingizni yuklang (ixtiyoriy)"
+
+msgid "Create Member Account"
+msgstr "A'zo hisobini yaratish"
+
+msgid "Create Company Account"
+msgstr "Kompaniya hisobini yaratish"
+
+# Forgot password page
+msgid "Forgot Password"
+msgstr "Parolni unutdingizmi"
+
+msgid "Enter your email address and we'll send you a link to reset your password."
+msgstr "Elektron pochta manzilingizni kiriting va biz sizga parolni tiklash uchun havola yuboramiz."
+
+msgid "Email Address"
+msgstr "Elektron pochta manzili"
+
+msgid "Send Reset Link"
+msgstr "Tiklash havolasini yuborish"
+
+msgid "Back to Login"
+msgstr "Kirishga qaytish"
+
+# Edit profile page
+msgid "Edit Profile"
+msgstr "Profilni tahrirlash"
+
+msgid "Phone Number"
+msgstr "Telefon raqami"
+
+msgid "Upload New Photo"
+msgstr "Yangi rasm yuklash"
+
+msgid "Upload New Logo"
+msgstr "Yangi logotip yuklash"
+
+msgid "PNG, JPG, JPEG, GIF (max 16MB)"
+msgstr "PNG, JPG, JPEG, GIF (maksimal 16MB)"
+
+msgid "Current Photo"
+msgstr "Joriy rasm"
+
+msgid "Social Media & Links"
+msgstr "Ijtimoiy tarmoqlar va havolalar"
+
+msgid "Add Social Media"
+msgstr "Ijtimoiy tarmoq qo'shish"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "X (Twitter)"
+msgstr "X (Twitter)"
+
+msgid "Telegram"
+msgstr "Telegram"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Personal Website"
+msgstr "Shaxsiy veb-sayt"
+
+msgid "CV/Resume"
+msgstr "CV/Rezyume"
+
+msgid "Upload CV/Resume"
+msgstr "CV/Rezyume yuklash"
+
+msgid "PDF, DOC, DOCX (max 16MB)"
+msgstr "PDF, DOC, DOCX (maksimal 16MB)"
+
+msgid "Current CV"
+msgstr "Joriy CV"
+
+msgid "Download Current CV"
+msgstr "Joriy CV ni yuklab olish"
+
+msgid "Back to Dashboard"
+msgstr "Boshqaruv paneliga qaytish"
+
+msgid "Save Changes"
+msgstr "O'zgarishlarni saqlash"
+
+# Carousel translations
+msgid "Meet Our Community"
+msgstr "Jamiyatimiz bilan tanishing"
+
+msgid "Discover talented individuals from top universities around the world"
+msgstr "Dunyoning yuqori universitetlaridan kelgan iqtidorli shaxslarni kashf eting"
+
+# New Community.co inspired translations
+msgid "VISIBILITY"
+msgstr "KO'RINISHLIK"
+
+msgid "CONNECTIONS"
+msgstr "ALOQALAR"
+
+msgid "GROWTH"
+msgstr "O'SISH"
+
+msgid "Business moves at the speed of community."
+msgstr "Biznes jamiyat tezligida harakat qiladi."
+
+msgid "For over a decade, Youth Club Community has pioneered and grown to become the global leader for professional communities of talented youth from top universities."
+msgstr "O'n yildan ortiq vaqt davomida Youth Club Community dunyoning yuqori universitetlaridan kelgan iqtidorli yoshlar uchun professional jamiyatlar bo'yicha global yetakchiga aylanish uchun kashshof bo'ldi va o'sdi."
+
+msgid "Let's Do Business"
+msgstr "Biznes qilaylik"
+
+msgid "Our members are industry leaders who drive business forward."
+msgstr "Bizning a'zolarimiz biznesni oldinga siljitadigan soha yetakchilaridir."
+
+msgid "ABOUT YOUTH CLUB COMMUNITY"
+msgstr "YOUTH CLUB COMMUNITY HAQIDA"
+
+msgid "Builders of bespoke professional communities."
+msgstr "Maxsus professional jamiyatlar quruvchilari."
+
+msgid "We partner with, and are trusted by, the most demanding and discerning business networks in the world. We provide a digital business model, tools, and access to trusted peers, mentors and other meaningful relationships that elevate a member experience into time well spent."
+msgstr "Biz dunyodagi eng talabchan va farosatli biznes tarmoqlari bilan hamkorlik qilamiz va ular tomonidan ishonchga sazovor bo'lamiz. Biz raqamli biznes modeli, vositalar va ishonchli tengdoshlar, mentorlar va a'zo tajribasini vaqtni yaxshi sarflashga olib keladigan boshqa mazmunli munosabatlarga kirish imkonini beramiz."
+
+msgid "More About Us"
+msgstr "Biz haqimizda ko'proq"
+
+msgid "Top Universities"
+msgstr "Yuqori Universitetlar"
+
+msgid "Members from prestigious universities worldwide"
+msgstr "Dunyoning nufuzli universitetlaridan a'zolar"
+
+msgid "Professional Network"
+msgstr "Professional Tarmoq"
+
+msgid "Connect with industry leaders"
+msgstr "Soha yetakchilari bilan bog'laning"
+
+msgid "Growth"
+msgstr "O'sish"
+
+msgid "Accelerate your career"
+msgstr "Karyerangizni tezlashtiring"
+
+msgid "OUR MEMBERS"
+msgstr "BIZNING A'ZOLAR"
+
+msgid "Ambitious executives and entrepreneurs who drive business forward."
+msgstr "Biznesni oldinga siljitadigan ambitsiyali rahbarlar va tadbirkorlar."
+
+msgid "We understand the needs of motivated business leaders and executives who want to spend their time in purposeful and meaningful ways. Our members are busy and accomplished professional leaders who:"
+msgstr "Biz vaqtlarini maqsadli va mazmunli tarzda sarflashni istaydigan motivatsiyalangan biznes rahbarlari va boshqaruvchilarining ehtiyojlarini tushunamiz. Bizning a'zolarimiz band va muvaffaqiyatli professional rahbarlar:"
+
+msgid "Have hyper-specific goals"
+msgstr "Juda aniq maqsadlarga ega"
+
+msgid "and needs that keep them engaged."
+msgstr "va ularni jalb qiladigan ehtiyojlar."
+
+msgid "Want to be surrounded by like-minded peers"
+msgstr "O'xshash fikrli tengdoshlar bilan o'ralishni xohlashadi"
+
+msgid "both accomplished and aspirational."
+msgstr "ham muvaffaqiyatli, ham orzu qiluvchi."
+
+msgid "Want increased visibility"
+msgstr "Ko'proq ko'rinishni xohlashadi"
+
+msgid "for their ideas, insights, and influence within their industry."
+msgstr "o'z g'oyalari, tushunchalari va sohadagi ta'siri uchun."
+
+msgid "Crave authentic connection"
+msgstr "Haqiqiy aloqani istashadi"
+
+msgid "and access to meaningful relationships to grow their businesses."
+msgstr "va bizneslarini o'shirish uchun mazmunli munosabatlardan foydalanish."
+
+msgid "Want immediate support"
+msgstr "Darhol qo'llab-quvvatlashni xohlashadi"
+
+msgid "from trusted peers and mentors to stay ahead of the game."
+msgstr "o'yinda oldinda qolish uchun ishonchli tengdoshlar va mentorlardan."
+
+msgid "Seek access to valuable benefits"
+msgstr "Qimmatli imtiyozlarga kirishni qidirishadi"
+
+msgid "and services that have real impact on their time and business."
+msgstr "va ularning vaqti va biznesiga haqiqiy ta'sir ko'rsatadigan xizmatlar."
+
+msgid "More About Our Member Base"
+msgstr "A'zolarimiz bazasi haqida ko'proq"
+
+msgid "A DISTINCT ADVANTAGE"
+msgstr "AJRALIB TUROVCHI AFZALLIK"
+
+msgid "The business of community for a digital professional world."
+msgstr "Raqamli professional dunyo uchun jamiyat biznesi."
+
+msgid "In a world where community has become a bit of a buzzword, your audience has infinite networking options to choose from—which means you need a differentiated solution."
+msgstr "Jamiyat biroz moda so'zga aylangan dunyoda, auditoriyangiz tanlash uchun cheksiz tarmoq variantlariga ega—bu sizga farqlanuvchi yechim kerakligini anglatadi."
+
+msgid "We build and manage bespoke professional communities of all shapes and sizes. We know the business of community for a digital-first professional world, because we pioneered, and even literally, wrote the book on it."
+msgstr "Biz har xil shakl va o'lchamdagi maxsus professional jamiyatlarni qurish va boshqarish. Biz raqamli-birinchi professional dunyo uchun jamiyat biznesini bilamiz, chunki biz buni kashshof qildik va hatto so'zma-so'z kitob yozdik."
+
+msgid "See How We Do It"
+msgstr "Buni qanday qilishimizni ko'ring"
+
+msgid "It starts with a conversation."
+msgstr "Bu suhbatdan boshlanadi."
+
+msgid "Are you an ambitious student or professional seeking a distinct advantage?"
+msgstr "Siz ajralib turadigan afzallik qidirayotgan ambitsiyali talaba yoki professionalmisiz?"
+
+msgid "A member of our team will show you how we can partner with you to help you launch and grow your professional network."
+msgstr "Jamoamizning a'zosi sizga professional tarmog'ingizni ishga tushirish va o'shirishda qanday hamkorlik qilishimizni ko'rsatadi."
+
+msgid "Get Started Today"
+msgstr "Bugun boshlang"
+
+msgid "Contact Us"
+msgstr "Biz bilan bog'laning"
+
+msgid "Universities"
+msgstr "Universitetlar"
+
+msgid "Members to date"
+msgstr "Hozirgacha a'zolar"
+
+msgid "Countries"
+msgstr "Mamlakatlar"
+
+msgid "Success Rate"
+msgstr "Muvaffaqiyat darajasi"

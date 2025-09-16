@@ -1,0 +1,432 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Uzbek Global Network{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge">
+                    <span class="badge-text">{{ _('VISIBILITY') }}</span>
+                    <span class="badge-separator">•</span>
+                    <span class="badge-text">{{ _('CONNECTIONS') }}</span>
+                    <span class="badge-separator">•</span>
+                    <span class="badge-text">{{ _('GROWTH') }}</span>
+                </div>
+                <h1 class="hero-title">{{ _('Business moves at the speed of community.') }}</h1>
+                <p class="hero-subtitle">{{ _('For over a decade, Uzbek Global Network has pioneered and grown to become the global leader for professional communities of talented youth from top universities.') }}</p>
+                {% if not current_user.is_authenticated %}
+                    <div class="hero-actions">
+                        <a href="{{ url_for('register_type_selection') }}" class="btn btn-primary btn-lg">{{ _("Let's Do Business") }}</a>
+                        <a href="{{ url_for('login') }}" class="btn btn-outline btn-lg">{{ _('Sign In') }}</a>
+                    </div>
+                {% else %}
+                    <div class="hero-actions">
+                        <a href="{{ url_for('dashboard') }}" class="btn btn-primary btn-lg">{{ _('Go to Dashboard') }}</a>
+                        <a href="{{ url_for('members') }}" class="btn btn-outline btn-lg">{{ _('View Members') }}</a>
+                    </div>
+                {% endif %}
+            </div>
+            <div class="hero-visual">
+                <div class="hero-illustration">
+                    <!-- Video Background -->
+                    <video class="hero-video" autoplay muted loop playsinline>
+                        <source src="{{ url_for('static', filename='images/bg_connection.mp4') }}" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <!-- Dynamic Member Images -->
+                    {% for member in hero_members %}
+                    <div class="member-image member-{{ loop.index }}">
+                        <a href="{{ url_for('member_details', user_id=member.id) }}">
+                            {% if member.photo_filename %}
+                                <img src="{{ url_for('static', filename='uploads/' + member.photo_filename) }}" alt="{{ member.full_name }}">
+                            {% else %}
+                                <div class="member-initials">{{ member.full_name[0] }}{{ member.full_name.split()[-1][0] if member.full_name.split()|length > 1 else '' }}</div>
+                            {% endif %}
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Trusted By Section -->
+<section class="trusted-by-section">
+    <div class="container">
+        <p class="trusted-by-text">{{ _('Our members are industry leaders who drive business forward.') }}</p>
+        <div class="company-logos-container">
+            <div class="company-logos-carousel" id="companyLogosCarousel">
+                <div class="company-logos-track" id="companyLogosTrack">
+                    {% if featured_companies %}
+                        {% for company in featured_companies %}
+                        <div class="company-logo-item">
+                            <img src="{{ url_for('static', filename='uploads/' + company.photo_filename) }}" 
+                                 alt="{{ company.company_name or 'Company' }}" 
+                                 class="company-logo">
+                        </div>
+                        {% endfor %}
+                        <!-- Duplicate for seamless loop -->
+                        {% for company in featured_companies %}
+                        <div class="company-logo-item">
+                            <img src="{{ url_for('static', filename='uploads/' + company.photo_filename) }}" 
+                                 alt="{{ company.company_name or 'Company' }}" 
+                                 class="company-logo">
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Fallback sample company logos -->
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Beshique</div>
+                        </div>
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Ministry of Digital</div>
+                        </div>
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Coca Cola</div>
+                        </div>
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Korzinka</div>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Beshique</div>
+                        </div>
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Ministry of Digital</div>
+                        </div>
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Coca Cola</div>
+                        </div>
+                        <div class="company-logo-item">
+                            <div class="company-logo-placeholder">Korzinka</div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-text">
+                <div class="section-badge">{{ _('ABOUT YOUTH CLUB COMMUNITY') }}</div>
+                <h2 class="section-title">{{ _('Builders of bespoke professional communities.') }}</h2>
+                <p class="section-description">{{ _('We partner with, and are trusted by, the most demanding and discerning business networks in the world. We provide a digital business model, tools, and access to trusted peers, mentors and other meaningful relationships that elevate a member experience into time well spent.') }}</p>
+                <a href="{{ url_for('contact') }}" class="btn btn-outline">{{ _('More About Us') }}</a>
+            </div>
+            <div class="about-visual">
+                <div class="about-illustration">
+                    <div class="illustration-card">
+                        <div class="card-icon">🎓</div>
+                        <h4>{{ _('Top Universities') }}</h4>
+                        <p>{{ _('Members from prestigious universities worldwide') }}</p>
+                    </div>
+                    <div class="illustration-card">
+                        <div class="card-icon">🤝</div>
+                        <h4>{{ _('Professional Network') }}</h4>
+                        <p>{{ _('Connect with industry leaders') }}</p>
+                    </div>
+                    <div class="illustration-card">
+                        <div class="card-icon">🚀</div>
+                        <h4>{{ _('Growth') }}</h4>
+                        <p>{{ _('Accelerate your career') }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Our Members Section -->
+<section class="members-section">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">{{ _('OUR MEMBERS') }}</div>
+            <h2 class="section-title">{{ _('Ambitious executives and entrepreneurs who drive business forward.') }}</h2>
+            <p class="section-description">{{ _('We understand the needs of motivated business leaders and executives who want to spend their time in purposeful and meaningful ways. Our members are busy and accomplished professional leaders who:') }}</p>
+        </div>
+        
+        <div class="members-features">
+            <div class="feature-item">
+                <div class="feature-icon">🎯</div>
+                <h4>{{ _('Have hyper-specific goals') }}</h4>
+                <p>{{ _('and needs that keep them engaged.') }}</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👥</div>
+                <h4>{{ _('Want to be surrounded by like-minded peers') }}</h4>
+                <p>{{ _('both accomplished and aspirational.') }}</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">👁️</div>
+                <h4>{{ _('Want increased visibility') }}</h4>
+                <p>{{ _('for their ideas, insights, and influence within their industry.') }}</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">💎</div>
+                <h4>{{ _('Crave authentic connection') }}</h4>
+                <p>{{ _('and access to meaningful relationships to grow their businesses.') }}</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">⚡</div>
+                <h4>{{ _('Want immediate support') }}</h4>
+                <p>{{ _('from trusted peers and mentors to stay ahead of the game.') }}</p>
+            </div>
+            <div class="feature-item">
+                <div class="feature-icon">🎁</div>
+                <h4>{{ _('Seek access to valuable benefits') }}</h4>
+                <p>{{ _('and services that have real impact on their time and business.') }}</p>
+            </div>
+        </div>
+        
+        <div class="section-actions">
+            <a href="{{ url_for('members') }}" class="btn btn-outline">{{ _('More About Our Member Base') }}</a>
+        </div>
+    </div>
+</section>
+
+<!-- Community Members Carousel Section -->
+<section class="community-showcase">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-badge">{{ _('MEET OUR COMMUNITY') }}</div>
+            <h2 class="section-title">{{ _('Discover talented individuals from top universities around the world') }}</h2>
+        </div>
+        
+        <!-- Carousel Container -->
+        <div class="members-carousel-container">
+            <div class="members-carousel" id="membersCarousel">
+                <div class="carousel-track" id="carouselTrack">
+                    {% if featured_members %}
+                        {% for member in featured_members %}
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='uploads/' + member.photo_filename) if member.photo_filename else url_for('static', filename='images/president.JPG') }}" 
+                                 alt="{{ member.full_name or 'Member' }}" class="member-photo">
+                            <h5 class="member-name">{{ member.full_name or 'Anonymous Member' }}</h5>
+                            <p class="member-title">{{ member.current_position or member.major or 'Student' }}</p>
+                            <p class="member-university">{{ member.university or 'University' }}</p>
+                            <div class="member-tags">
+                                {% if member.major %}
+                                    <span class="member-tag">{{ member.major }}</span>
+                                {% endif %}
+                                {% if member.university_country %}
+                                    <span class="member-tag">{{ member.university_country }}</span>
+                                {% endif %}
+                                {% if member.current_company %}
+                                    <span class="member-tag">{{ member.current_company }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                        <!-- Duplicate for seamless loop -->
+                        {% for member in featured_members %}
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='uploads/' + member.photo_filename) if member.photo_filename else url_for('static', filename='images/president.JPG') }}" 
+                                 alt="{{ member.full_name or 'Member' }}" class="member-photo">
+                            <h5 class="member-name">{{ member.full_name or 'Anonymous Member' }}</h5>
+                            <p class="member-title">{{ member.current_position or member.major or 'Student' }}</p>
+                            <p class="member-university">{{ member.university or 'University' }}</p>
+                            <div class="member-tags">
+                                {% if member.major %}
+                                    <span class="member-tag">{{ member.major }}</span>
+                                {% endif %}
+                                {% if member.university_country %}
+                                    <span class="member-tag">{{ member.university_country }}</span>
+                                {% endif %}
+                                {% if member.current_company %}
+                                    <span class="member-tag">{{ member.current_company }}</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <!-- Fallback sample members when no real members exist -->
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Ahmad Karimov</h5>
+                            <p class="member-title">Software Engineer</p>
+                            <p class="member-university">Tashkent University of Information Technologies</p>
+                            <div class="member-tags">
+                                <span class="member-tag">Programming</span>
+                                <span class="member-tag">Web Development</span>
+                                <span class="member-tag">AI</span>
+                            </div>
+                        </div>
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Sarah Johnson</h5>
+                            <p class="member-title">Data Scientist</p>
+                            <p class="member-university">MIT</p>
+                            <div class="member-tags">
+                                <span class="member-tag">Machine Learning</span>
+                                <span class="member-tag">Python</span>
+                                <span class="member-tag">Statistics</span>
+                            </div>
+                        </div>
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Ali Hassan</h5>
+                            <p class="member-title">Product Manager</p>
+                            <p class="member-university">Stanford University</p>
+                            <div class="member-tags">
+                                <span class="member-tag">Product Strategy</span>
+                                <span class="member-tag">Leadership</span>
+                                <span class="member-tag">Innovation</span>
+                            </div>
+                        </div>
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Elena Rodriguez</h5>
+                            <p class="member-title">UX Designer</p>
+                            <p class="member-university">University of Barcelona</p>
+                            <div class="member-tags">
+                                <span class="member-tag">UI/UX</span>
+                                <span class="member-tag">Design Thinking</span>
+                                <span class="member-tag">Research</span>
+                            </div>
+                        </div>
+                        <!-- Duplicate for seamless loop -->
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Ahmad Karimov</h5>
+                            <p class="member-title">Software Engineer</p>
+                            <p class="member-university">Tashkent University of Information Technologies</p>
+                            <div class="member-tags">
+                                <span class="member-tag">Programming</span>
+                                <span class="member-tag">Web Development</span>
+                                <span class="member-tag">AI</span>
+                            </div>
+                        </div>
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Sarah Johnson</h5>
+                            <p class="member-title">Data Scientist</p>
+                            <p class="member-university">MIT</p>
+                            <div class="member-tags">
+                                <span class="member-tag">Machine Learning</span>
+                                <span class="member-tag">Python</span>
+                                <span class="member-tag">Statistics</span>
+                            </div>
+                        </div>
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Ali Hassan</h5>
+                            <p class="member-title">Product Manager</p>
+                            <p class="member-university">Stanford University</p>
+                            <div class="member-tags">
+                                <span class="member-tag">Product Strategy</span>
+                                <span class="member-tag">Leadership</span>
+                                <span class="member-tag">Innovation</span>
+                            </div>
+                        </div>
+                        <div class="member-card-carousel">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" alt="Sample Member" class="member-photo">
+                            <h5 class="member-name">Elena Rodriguez</h5>
+                            <p class="member-title">UX Designer</p>
+                            <p class="member-university">University of Barcelona</p>
+                            <div class="member-tags">
+                                <span class="member-tag">UI/UX</span>
+                                <span class="member-tag">Design Thinking</span>
+                                <span class="member-tag">Research</span>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Carousel Controls -->
+            <button class="carousel-control prev" id="prevBtn" aria-label="Previous members">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-control next" id="nextBtn" aria-label="Next members">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        
+        
+    </div>
+</section>
+
+<!-- Distinct Advantage Section -->
+<section class="advantage-section">
+    <div class="container">
+        <div class="advantage-content">
+            <div class="advantage-text">
+                <div class="section-badge">{{ _('A DISTINCT ADVANTAGE') }}</div>
+                <h2 class="section-title">{{ _('The business of community for a digital professional world.') }}</h2>
+                <p class="section-description">{{ _('In a world where community has become a bit of a buzzword, your audience has infinite networking options to choose from—which means you need a differentiated solution.') }}</p>
+                <p class="section-description">{{ _('We build and manage bespoke professional communities of all shapes and sizes. We know the business of community for a digital-first professional world, because we pioneered, and even literally, wrote the book on it.') }}</p>
+                <a href="{{ url_for('register_type_selection') }}" class="btn btn-outline">{{ _('See How We Do It') }}</a>
+            </div>
+            <div class="advantage-visual">
+                <div class="advantage-illustration">
+                    <div class="illustration-element element-1"></div>
+                    <div class="illustration-element element-2"></div>
+                    <div class="illustration-element element-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="container">
+        <div class="cta-content">
+            <h2 class="cta-title">{{ _('It starts with a conversation.') }}</h2>
+            <p class="cta-subtitle">{{ _('Are you an ambitious student or professional seeking a distinct advantage?') }}</p>
+            <p class="cta-description">{{ _('A member of our team will show you how we can partner with you to help you launch and grow your professional network.') }}</p>
+            <div class="cta-actions">
+                <a href="{{ url_for('register_type_selection') }}" class="btn btn-primary btn-lg">{{ _('Get Started Today') }}</a>
+                <a href="{{ url_for('contact') }}" class="btn btn-outline btn-lg">{{ _('Contact Us') }}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="stats-section">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">{{ stats.total_members }}+</div>
+                <div class="stat-label">{{ _('Members to date') }}</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ stats.unique_countries }}+</div>
+                <div class="stat-label">{{ _('Countries') }}</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">{{ stats.success_rate }}%</div>
+                <div class="stat-label">{{ _('Success Rate') }}</div>
+            </div>
+        </div>
+        
+        <!-- Connecting Arrows -->
+        <div class="stats-connections">
+            <svg class="stats-arrows" viewBox="0 0 800 200" preserveAspectRatio="xMidYMid meet">
+                <!-- Arrow from Members to Countries -->
+                <defs>
+                    <marker id="arrowhead" markerWidth="10" markerHeight="7" 
+                            refX="9" refY="3.5" orient="auto">
+                        <polygon points="0 0, 10 3.5, 0 7" fill="#8B5CF6" />
+                    </marker>
+                </defs>
+                
+                <!-- Connection lines -->
+                <path d="M 150 100 Q 300 50 450 100" stroke="#8B5CF6" stroke-width="2" 
+                      fill="none" marker-end="url(#arrowhead)" opacity="0.6"/>
+                <path d="M 450 100 Q 600 150 750 100" stroke="#8B5CF6" stroke-width="2" 
+                      fill="none" marker-end="url(#arrowhead)" opacity="0.6"/>
+            </svg>
+        </div>
+    </div>
+</section>
+{% endblock %}

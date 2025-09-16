@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+
+{% block title %}Contact Us - Uzbek Global Network{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-4 fw-bold text-primary">{{ _('Contact Us') }}</h1>
+                <p class="lead text-muted">{{ _('Get in touch with our community') }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Contact Information Section -->
+        <div class="col-lg-6 mb-5">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="fas fa-envelope me-2"></i>{{ _('Contact Information') }}
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-12 mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Email</h6>
+                                    <a href="mailto:info@hello.com" class="text-decoration-none">
+                                        info@hello.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-success rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fas fa-phone text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Phone</h6>
+                                    <a href="tel:+998772651115" class="text-decoration-none">
+                                        +998 (77) 265 11 15
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 mb-4">
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="bg-info rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 50px; height: 50px;">
+                                    <i class="fab fa-telegram text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Telegram</h6>
+                                    <a href="https://t.me/kremniy_olami_contact" target="_blank" class="text-decoration-none">
+                                        @kremniy_olami_contact
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Team Section -->
+        <div class="col-lg-6 mb-5">
+            <div class="card h-100 shadow">
+                <div class="card-header bg-warning text-dark">
+                    <h4 class="mb-0">
+                        <i class="fas fa-users me-2"></i>{{ _('Our Team') }}
+                    </h4>
+                </div>
+                <div class="card-body p-4">
+                    <div class="text-center mb-4">
+                        <div class="mb-3">
+                            <img src="{{ url_for('static', filename='images/president.JPG') }}" 
+                                 alt="Hasan Yusufkhuja" 
+                                 class="rounded-circle mb-3"
+                                 style="width: 150px; height: 150px; object-fit: cover;"
+                                 onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                            <!-- <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3" 
+                                 style="width: 150px; height: 150px; display: none;">
+                                <i class="fas fa-user text-dark fa-3x"></i>
+                            </div> -->
+                        </div>
+                        <h5 class="mb-2">Hasan Yusufkhuja</h5>
+                        <span class="badge bg-warning text-dark fs-6">{{ _('Founder') }}</span>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 40px; height: 40px;">
+                                    <i class="fas fa-envelope text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">Email</h6>
+                                    <a href="mailto:khasanya99@gmail.com" class="text-decoration-none">
+                                        khasanya99@gmail.com
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-12 mb-3">
+                            <div class="d-flex align-items-center mb-2">
+                                <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3" 
+                                     style="width: 40px; height: 40px;">
+                                    <i class="fab fa-linkedin text-white"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-1">LinkedIn</h6>
+                                    <a href="https://www.linkedin.com/in/hasan-yusufkhuja-22a516162/" 
+                                       target="_blank" class="text-decoration-none">
+                                        Hasan Yusufkhuja
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Additional Information -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card shadow">
+                <div class="card-body text-center p-4">
+                    <h5 class="mb-3 text-primary">
+                        <i class="fas fa-info-circle me-2"></i>{{ _('Get Involved') }}
+                    </h5>
+                    <p class="mb-4 text-muted">
+                        {{ _('Ready to join our community? Whether you\'re a student, graduate, or company, we\'d love to have you as part of our network.') }}
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('register_type_selection') }}" class="btn btn-primary">
+                            <i class="fas fa-user-plus me-2"></i>{{ _('Join Our Community') }}
+                        </a>
+                        <a href="{{ url_for('members') }}" class="btn btn-outline-primary">
+                            <i class="fas fa-users me-2"></i>{{ _('View Members') }}
+                        </a>
+                        <a href="{{ url_for('companies') }}" class="btn btn-outline-warning">
+                            <i class="fas fa-building me-2"></i>{{ _('View Companies') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

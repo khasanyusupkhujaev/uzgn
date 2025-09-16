@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Join Our Community - Youth Club{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h4 class="mb-0"><i class="fas fa-user-plus me-2"></i>{{ _('Join Our Community') }}</h4>
+            </div>
+            <div class="card-body p-5 text-center">
+                <h5 class="mb-4">{{ _('I am a...') }}</h5>
+                
+                <div class="row g-3 justify-content-center">
+                    <div class="col-md-5">
+                        <div class="card h-100 border-0 shadow-sm type-selection-card" data-type="member">
+                            <div class="card-body d-flex flex-column align-items-center p-4">
+                                <div class="mb-3">
+                                    <i class="fas fa-user fa-3x text-primary"></i>
+                                </div>
+                                <h6 class="card-title">{{ _('Member') }}</h6>
+                                <p class="card-text small text-muted">{{ _('I am a student or graduate from a university') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-5">
+                        <div class="card h-100 border-0 shadow-sm type-selection-card" data-type="company">
+                            <div class="card-body d-flex flex-column align-items-center p-4">
+                                <div class="mb-3">
+                                    <i class="fas fa-building fa-3x text-warning"></i>
+                                </div>
+                                <h6 class="card-title">{{ _('Company') }}</h6>
+                                <p class="card-text small text-muted">{{ _('I represent a company or organization') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-4">
+                    <p class="text-muted">{{ _('Already have an account?') }} <a href="{{ url_for('login') }}" class="text-decoration-none">{{ _('Sign in here') }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.type-selection-card {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.type-selection-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.type-selection-card.selected {
+    border: 2px solid #007bff !important;
+    background-color: #f8f9fa;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const typeCards = document.querySelectorAll('.type-selection-card');
+    
+    typeCards.forEach(card => {
+        card.addEventListener('click', function() {
+            const userType = this.getAttribute('data-type');
+            
+            // Remove selected class from all cards
+            typeCards.forEach(c => c.classList.remove('selected'));
+            
+            // Add selected class to clicked card
+            this.classList.add('selected');
+            
+            // Redirect to registration form with selected type
+            setTimeout(() => {
+                window.location.href = `/register/${userType}`;
+            }, 300);
+        });
+    });
+});
+</script>
+{% endblock %}

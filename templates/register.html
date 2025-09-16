@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+
+{% block title %}Register - Uzbek Global Network{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="{{ url_for('register_type_selection') }}" class="btn btn-outline-light btn-sm">
+                        <i class="fas fa-arrow-left me-1"></i>{{ _('Back') }}
+                    </a>
+                    <h4 class="mb-0">
+                        <i class="fas fa-user-plus me-2"></i>
+                        {% if user_type == 'member' %}{{ _('Member Registration') }}{% else %}{{ _('Company Registration') }}{% endif %}
+                    </h4>
+                    <div style="width: 80px;"></div> <!-- Spacer for centering -->
+                </div>
+            </div>
+            <div class="card-body p-4">
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle me-2"></i>
+                    {{ _('Sections marked with') }} <span class="text-danger">*</span> {{ _('are mandatory, other sections are highly beneficial to fill.') }}
+                </div>
+                
+                <form method="POST" enctype="multipart/form-data" id="registrationForm">
+                    <!-- Hidden user type input -->
+                    <input type="hidden" name="user_type" value="{{ user_type }}">
+                    
+                    <!-- User Type Display -->
+                    <div class="alert alert-info mb-4">
+                        <i class="fas fa-info-circle me-2"></i>
+                        <strong>{{ _('Registering as:') }}</strong> 
+                        {% if user_type == 'member' %}
+                            <span class="badge bg-primary"><i class="fas fa-user me-1"></i>{{ _('Member') }}</span>
+                        {% elif user_type == 'company' %}
+                            <span class="badge bg-warning"><i class="fas fa-building me-1"></i>{{ _('Company') }}</span>
+                        {% endif %}
+                    </div>
+
+                    <!-- Basic Information -->
+                    <h5 class="mb-3 text-primary"><i class="fas fa-user me-2"></i>{{ _('Basic Information') }}</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">{{ _('Email') }} <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" name="email" required>
+                        </div>
+                        {% if user_type == 'member' %}
+                        <div class="col-md-6 mb-3">
+                            <label for="full_name" class="form-label">{{ _('Full Name') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="full_name" name="full_name" required>
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="password" class="form-label">{{ _('Password') }} <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="confirm_password" class="form-label">{{ _('Confirm Password') }} <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                <span class="input-group-text" id="password-match-indicator">
+                                    <i class="fas fa-times text-danger" id="password-icon"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% if user_type == 'member' %}
+                    <!-- Member Information -->
+                    <h5 class="mb-3 text-primary"><i class="fas fa-university me-2"></i>{{ _('Education Information') }}</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="university_country" class="form-label">{{ _('University Country') }} <span class="text-danger">*</span></label>
+                            <div class="country-dropdown" id="university_country_dropdown">
+                                <input type="text" class="country-input" id="university_country" name="university_country" placeholder="{{ _('Select or type country name') }}" required autocomplete="off">
+                                <div class="country-dropdown-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="country-dropdown-list" id="university_country_list"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="university" class="form-label">{{ _('University Name') }} <span class="text-danger">*</span></label>
+                            <div class="university-dropdown" id="university_dropdown">
+                                <input type="text" class="university-input" id="university" name="university" placeholder="{{ _('Select or type university name') }}" required autocomplete="off">
+                                <div class="university-dropdown-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="university-dropdown-list" id="university_list"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="major" class="form-label">{{ _('Major') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="major" name="major" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="start_date" class="form-label">{{ _('Start Date') }} <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="start_date" name="start_date" 
+                                       placeholder="{{ _('Select month and year') }}" readonly required>
+                                <span class="input-group-text" style="cursor: pointer;" onclick="document.getElementById('start_date').click()">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <div class="form-text">{{ _('When did you start university?') }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="end_date" class="form-label">{{ _('End Date') }} <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="end_date" name="end_date" 
+                                       placeholder="{{ _('Select month and year') }}" readonly required>
+                                <span class="input-group-text" style="cursor: pointer;" onclick="document.getElementById('end_date').click()">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </span>
+                            </div>
+                            <div class="form-text">{{ _('When did you graduate?') }}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="is_current_student" name="is_current_student">
+                                <label class="form-check-label" for="is_current_student">
+                                    {{ _('I am a current student') }}
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Employment Status -->
+                    <h5 class="mb-3 text-primary"><i class="fas fa-briefcase me-2"></i>{{ _('Employment Status') }}</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="current_company" class="form-label">{{ _('Company') }}</label>
+                            <input type="text" class="form-control" id="current_company" name="current_company">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="current_position" class="form-label">{{ _('Position') }}</label>
+                            <input type="text" class="form-control" id="current_position" name="current_position">
+                        </div>
+                    </div>
+
+                    <!-- Additional Information for Members -->
+                    <h5 class="mb-3 text-primary"><i class="fas fa-info-circle me-2"></i>{{ _('Additional Information') }}</h5>
+                    <div class="mb-3">
+                        <label for="bio" class="form-label">{{ _('Bio') }}</label>
+                        <textarea class="form-control" id="bio" name="bio" rows="3" placeholder="{{ _('Tell us about yourself...') }}"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="linkedin_url" class="form-label">{{ _('LinkedIn') }}</label>
+                        <input type="url" class="form-control" id="linkedin_url" name="linkedin_url" placeholder="https://linkedin.com/in/yourprofile">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">{{ _('Profile Photo') }}</label>
+                        <input type="file" class="form-control" id="photo" name="photo" accept="image/*">
+                        <div class="form-text">{{ _('Optional: Upload a profile photo (PNG, JPG, JPEG, GIF)') }}</div>
+                    </div>
+
+                    {% elif user_type == 'company' %}
+                    <!-- Company Information -->
+                    <h5 class="mb-3 text-primary"><i class="fas fa-building me-2"></i>{{ _('Company Information') }}</h5>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="company_name" class="form-label">{{ _('Company Name') }} <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="company_name" name="company_name" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="company_country" class="form-label">{{ _('Country') }} <span class="text-danger">*</span></label>
+                            <div class="country-dropdown" id="company_country_dropdown">
+                                <input type="text" class="country-input" id="company_country" name="company_country" placeholder="{{ _('Select or type country name') }}" required autocomplete="off">
+                                <div class="country-dropdown-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                                <div class="country-dropdown-list" id="company_country_list"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="industry" class="form-label">{{ _('Industry') }} <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="industry" name="industry" 
+                               placeholder="{{ _('e.g., Technology, Finance, Healthcare, etc.') }}" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="logo" class="form-label">{{ _('Company Logo') }}</label>
+                        <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
+                        <div class="form-text">{{ _('Upload your company logo (optional)') }}</div>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            {% if user_type == 'member' %}{{ _('Create Member Account') }}{% else %}{{ _('Create Company Account') }}{% endif %}
+                        </button>
+                    </div>
+                </form>
+                
+                <div class="text-center mt-3">
+                    <p class="mb-0">{{ _('Already have an account?') }} <a href="{{ url_for('login') }}" class="text-decoration-none">{{ _('Sign in here') }}</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm_password');
+    const passwordIcon = document.getElementById('password-icon');
+    const passwordMatchIndicator = document.getElementById('password-match-indicator');
+    
+    // Password confirmation validation
+    function validatePasswordMatch() {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        
+        if (confirmPassword === '') {
+            passwordIcon.className = 'fas fa-times text-danger';
+            passwordMatchIndicator.className = 'input-group-text';
+            return;
+        }
+        
+        if (password === confirmPassword) {
+            passwordIcon.className = 'fas fa-check text-success';
+            passwordMatchIndicator.className = 'input-group-text bg-success text-white';
+        } else {
+            passwordIcon.className = 'fas fa-times text-danger';
+            passwordMatchIndicator.className = 'input-group-text bg-danger text-white';
+        }
+    }
+    
+    passwordInput.addEventListener('input', validatePasswordMatch);
+    confirmPasswordInput.addEventListener('input', validatePasswordMatch);
+    
+    // Handle current student checkbox
+    const isCurrentStudentCheckbox = document.getElementById('is_current_student');
+    const endDateInput = document.getElementById('end_date');
+    
+    if (isCurrentStudentCheckbox && endDateInput) {
+        isCurrentStudentCheckbox.addEventListener('change', function() {
+            if (this.checked) {
+                endDateInput.required = false;
+                endDateInput.value = '';
+            } else {
+                endDateInput.required = true;
+            }
+        });
+    }
+    
+    // Form validation
+    const form = document.getElementById('registrationForm');
+    form.addEventListener('submit', function(event) {
+        const password = passwordInput.value;
+        const confirmPassword = confirmPasswordInput.value;
+        
+        if (password !== confirmPassword) {
+            event.preventDefault();
+            alert('Passwords do not match!');
+            return false;
+        }
+    });
+});
+</script>
+{% endblock %}

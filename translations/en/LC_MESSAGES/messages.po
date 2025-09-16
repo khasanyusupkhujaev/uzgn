@@ -1,0 +1,738 @@
+# English translations for Youth Club Community
+# Copyright (C) 2025 Youth Club Community
+# This file is distributed under the same license as the Youth Club Community project.
+# FIRST AUTHOR <email@example.com>, 2025.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Youth Club Community 1.0\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2025-01-12 16:00+0000\n"
+"PO-Revision-Date: 2025-01-12 16:00+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+# Navigation
+msgid "Home"
+msgstr "Home"
+
+msgid "Members"
+msgstr "Members"
+
+msgid "Companies"
+msgstr "Companies"
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Login"
+msgstr "Login"
+
+msgid "Register"
+msgstr "Register"
+
+msgid "Dashboard"
+msgstr "Dashboard"
+
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+msgid "Logout"
+msgstr "Logout"
+
+msgid "Admin"
+msgstr "Admin"
+
+# Home page
+msgid "Youth Club Community"
+msgstr "Youth Club Community"
+
+msgid "Connect with talented youth from top universities"
+msgstr "Connect with talented youth from top universities"
+
+msgid "Join Our Community"
+msgstr "Join Our Community"
+
+msgid "View Members"
+msgstr "View Members"
+
+msgid "View Companies"
+msgstr "View Companies"
+
+# Registration
+msgid "Create Account"
+msgstr "Create Account"
+
+msgid "Member Registration"
+msgstr "Member Registration"
+
+msgid "Company Registration"
+msgstr "Company Registration"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "Full Name"
+msgstr "Full Name"
+
+msgid "University Name"
+msgstr "University Name"
+
+msgid "University Country"
+msgstr "University Country"
+
+msgid "Major"
+msgstr "Major"
+
+msgid "Start Date"
+msgstr "Start Date"
+
+msgid "End Date"
+msgstr "End Date"
+
+msgid "I am a current student"
+msgstr "I am a current student"
+
+msgid "Company"
+msgstr "Company"
+
+msgid "Position"
+msgstr "Position"
+
+msgid "Bio"
+msgstr "Bio"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Profile Photo"
+msgstr "Profile Photo"
+
+msgid "Company Name"
+msgstr "Company Name"
+
+msgid "Country"
+msgstr "Country"
+
+msgid "Industry"
+msgstr "Industry"
+
+msgid "Company Logo"
+msgstr "Company Logo"
+
+# Contact page
+msgid "Contact Us"
+msgstr "Contact Us"
+
+msgid "Get in touch with our community"
+msgstr "Get in touch with our community"
+
+msgid "Contact Information"
+msgstr "Contact Information"
+
+msgid "Our Team"
+msgstr "Our Team"
+
+msgid "Founder"
+msgstr "Founder"
+
+msgid "Get Involved"
+msgstr "Get Involved"
+
+msgid "Ready to join our community? Whether you're a student, graduate, or company, we'd love to have you as part of our network."
+msgstr "Ready to join our community? Whether you're a student, graduate, or company, we'd love to have you as part of our network."
+
+# Language selector
+msgid "Language"
+msgstr "Language"
+
+msgid "English"
+msgstr "English"
+
+msgid "O'zbek"
+msgstr "O'zbek"
+
+# Additional translations
+msgid "Welcome to Youth Club"
+msgstr "Welcome to Youth Club"
+
+msgid "A community of talented youth from top universities around the world"
+msgstr "A community of talented youth from top universities around the world"
+
+msgid "Connect, collaborate, and grow together with like-minded individuals who are making a difference in their fields."
+msgstr "Connect, collaborate, and grow together with like-minded individuals who are making a difference in their fields."
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Go to Dashboard"
+msgstr "Go to Dashboard"
+
+# Members page
+msgid "Our Members"
+msgstr "Our Members"
+
+msgid "Discover talented individuals from top universities"
+msgstr "Discover talented individuals from top universities"
+
+msgid "View Profile"
+msgstr "View Profile"
+
+msgid "No Members Yet"
+msgstr "No Members Yet"
+
+msgid "No members have registered yet. Check back later!"
+msgstr "No members have registered yet. Check back later!"
+
+# Companies page
+msgid "Our Partner Companies"
+msgstr "Our Partner Companies"
+
+msgid "Discover the innovative companies we work with"
+msgstr "Discover the innovative companies we work with"
+
+msgid "View Details"
+msgstr "View Details"
+
+msgid "No Companies Yet"
+msgstr "No Companies Yet"
+
+msgid "No companies have registered yet. Check back later!"
+msgstr "No companies have registered yet. Check back later!"
+
+# Login page
+msgid "Sign In to Your Account"
+msgstr "Sign In to Your Account"
+
+msgid "Enter your credentials to access your account"
+msgstr "Enter your credentials to access your account"
+
+msgid "Remember Me"
+msgstr "Remember Me"
+
+msgid "Don't have an account?"
+msgstr "Don't have an account?"
+
+msgid "Forgot your password?"
+msgstr "Forgot your password?"
+
+# Registration page
+msgid "Join Our Community"
+msgstr "Join Our Community"
+
+msgid "Choose your registration type"
+msgstr "Choose your registration type"
+
+msgid "I am a student or graduate"
+msgstr "I am a student or graduate"
+
+msgid "I represent a company"
+msgstr "I represent a company"
+
+msgid "Sections marked with * are mandatory, other sections are highly beneficial to fill"
+msgstr "Sections marked with * are mandatory, other sections are highly beneficial to fill"
+
+msgid "When did you start university?"
+msgstr "When did you start university?"
+
+msgid "When did you graduate?"
+msgstr "When did you graduate?"
+
+msgid "Upload your profile photo (optional)"
+msgstr "Upload your profile photo (optional)"
+
+msgid "Upload your company logo (optional)"
+msgstr "Upload your company logo (optional)"
+
+msgid "Create Member Account"
+msgstr "Create Member Account"
+
+msgid "Create Company Account"
+msgstr "Create Company Account"
+
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+# Dashboard
+msgid "Welcome back"
+msgstr "Welcome back"
+
+msgid "Your Profile"
+msgstr "Your Profile"
+
+msgid "Edit your profile information"
+msgstr "Edit your profile information"
+
+msgid "View All Members"
+msgstr "View All Members"
+
+msgid "Browse our community members"
+msgstr "Browse our community members"
+
+msgid "View All Companies"
+msgstr "View All Companies"
+
+msgid "Browse our partner companies"
+msgstr "Browse our partner companies"
+
+# Additional translations
+msgid "Welcome Back"
+msgstr "Welcome Back"
+
+msgid "Sign in to your account"
+msgstr "Sign in to your account"
+
+msgid "Email Address"
+msgstr "Email Address"
+
+msgid "Sign In"
+msgstr "Sign In"
+
+msgid "Join our community"
+msgstr "Join our community"
+
+msgid "Quick Stats"
+msgstr "Quick Stats"
+
+msgid "Community"
+msgstr "Community"
+
+msgid "Connect with other members and explore opportunities."
+msgstr "Connect with other members and explore opportunities."
+
+msgid "Be the first to join our community!"
+msgstr "Be the first to join our community!"
+
+msgid "Join Now"
+msgstr "Join Now"
+
+# Index page additional translations
+msgid "Top Universities"
+msgstr "Top Universities"
+
+msgid "Members from prestigious universities worldwide, bringing diverse perspectives and expertise."
+msgstr "Members from prestigious universities worldwide, bringing diverse perspectives and expertise."
+
+msgid "Professional Network"
+msgstr "Professional Network"
+
+msgid "Connect with professionals across various industries and build meaningful relationships."
+msgstr "Connect with professionals across various industries and build meaningful relationships."
+
+msgid "Collaboration"
+msgstr "Collaboration"
+
+msgid "Work together on projects, share knowledge, and create opportunities for growth."
+msgstr "Work together on projects, share knowledge, and create opportunities for growth."
+
+msgid "Why Join Youth Club?"
+msgstr "Why Join Youth Club?"
+
+msgid "Access to a global network of talented individuals"
+msgstr "Access to a global network of talented individuals"
+
+msgid "Professional development opportunities"
+msgstr "Professional development opportunities"
+
+msgid "Mentorship and career guidance"
+msgstr "Mentorship and career guidance"
+
+msgid "Collaborative project opportunities"
+msgstr "Collaborative project opportunities"
+
+msgid "Knowledge sharing and learning"
+msgstr "Knowledge sharing and learning"
+
+msgid "Industry insights and trends"
+msgstr "Industry insights and trends"
+
+msgid "Networking events and meetups"
+msgstr "Networking events and meetups"
+
+msgid "Personal and professional growth"
+msgstr "Personal and professional growth"
+
+# Contact page additional translations
+msgid "Get Involved"
+msgstr "Get Involved"
+
+msgid "Ready to join our community? Whether you're a student, graduate, or company, we'd love to have you as part of our network."
+msgstr "Ready to join our community? Whether you're a student, graduate, or company, we'd love to have you as part of our network."
+
+msgid "View Members"
+msgstr "View Members"
+
+msgid "View Companies"
+msgstr "View Companies"
+
+# Registration type selection page
+msgid "I am a..."
+msgstr "I am a..."
+
+msgid "I am a student or graduate from a university"
+msgstr "I am a student or graduate from a university"
+
+msgid "I represent a company or organization"
+msgstr "I represent a company or organization"
+
+msgid "Already have an account?"
+msgstr "Already have an account?"
+
+msgid "Sign in here"
+msgstr "Sign in here"
+
+# Registration page
+msgid "Back"
+msgstr "Back"
+
+msgid "Member Registration"
+msgstr "Member Registration"
+
+msgid "Company Registration"
+msgstr "Company Registration"
+
+msgid "Sections marked with * are mandatory, other sections are highly beneficial to fill."
+msgstr "Sections marked with * are mandatory, other sections are highly beneficial to fill."
+
+msgid "Registering as:"
+msgstr "Registering as:"
+
+msgid "Member"
+msgstr "Member"
+
+msgid "Company"
+msgstr "Company"
+
+msgid "Basic Information"
+msgstr "Basic Information"
+
+msgid "Email"
+msgstr "Email"
+
+msgid "Full Name"
+msgstr "Full Name"
+
+msgid "Password"
+msgstr "Password"
+
+msgid "Confirm Password"
+msgstr "Confirm Password"
+
+msgid "Education Information"
+msgstr "Education Information"
+
+msgid "University Country"
+msgstr "University Country"
+
+msgid "University Name"
+msgstr "University Name"
+
+msgid "Major"
+msgstr "Major"
+
+msgid "Start Date"
+msgstr "Start Date"
+
+msgid "Select month and year"
+msgstr "Select month and year"
+
+msgid "When did you start university?"
+msgstr "When did you start university?"
+
+msgid "End Date"
+msgstr "End Date"
+
+msgid "When did you graduate?"
+msgstr "When did you graduate?"
+
+msgid "I am a current student"
+msgstr "I am a current student"
+
+msgid "Employment Status"
+msgstr "Employment Status"
+
+msgid "Position"
+msgstr "Position"
+
+msgid "Additional Information"
+msgstr "Additional Information"
+
+msgid "Bio"
+msgstr "Bio"
+
+msgid "Tell us about yourself..."
+msgstr "Tell us about yourself..."
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Profile Photo"
+msgstr "Profile Photo"
+
+msgid "Optional: Upload a profile photo (PNG, JPG, JPEG, GIF)"
+msgstr "Optional: Upload a profile photo (PNG, JPG, JPEG, GIF)"
+
+msgid "Company Information"
+msgstr "Company Information"
+
+msgid "Company Name"
+msgstr "Company Name"
+
+msgid "Country"
+msgstr "Country"
+
+msgid "Industry"
+msgstr "Industry"
+
+msgid "e.g., Technology, Finance, Healthcare, etc."
+msgstr "e.g., Technology, Finance, Healthcare, etc."
+
+msgid "Company Logo"
+msgstr "Company Logo"
+
+msgid "Upload your company logo (optional)"
+msgstr "Upload your company logo (optional)"
+
+msgid "Create Member Account"
+msgstr "Create Member Account"
+
+msgid "Create Company Account"
+msgstr "Create Company Account"
+
+# Forgot password page
+msgid "Forgot Password"
+msgstr "Forgot Password"
+
+msgid "Enter your email address and we'll send you a link to reset your password."
+msgstr "Enter your email address and we'll send you a link to reset your password."
+
+msgid "Email Address"
+msgstr "Email Address"
+
+msgid "Send Reset Link"
+msgstr "Send Reset Link"
+
+msgid "Back to Login"
+msgstr "Back to Login"
+
+# Edit profile page
+msgid "Edit Profile"
+msgstr "Edit Profile"
+
+msgid "Phone Number"
+msgstr "Phone Number"
+
+msgid "Upload New Photo"
+msgstr "Upload New Photo"
+
+msgid "Upload New Logo"
+msgstr "Upload New Logo"
+
+msgid "PNG, JPG, JPEG, GIF (max 16MB)"
+msgstr "PNG, JPG, JPEG, GIF (max 16MB)"
+
+msgid "Current Photo"
+msgstr "Current Photo"
+
+msgid "Social Media & Links"
+msgstr "Social Media & Links"
+
+msgid "Add Social Media"
+msgstr "Add Social Media"
+
+msgid "Instagram"
+msgstr "Instagram"
+
+msgid "X (Twitter)"
+msgstr "X (Twitter)"
+
+msgid "Telegram"
+msgstr "Telegram"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "Personal Website"
+msgstr "Personal Website"
+
+msgid "CV/Resume"
+msgstr "CV/Resume"
+
+msgid "Upload CV/Resume"
+msgstr "Upload CV/Resume"
+
+msgid "PDF, DOC, DOCX (max 16MB)"
+msgstr "PDF, DOC, DOCX (max 16MB)"
+
+msgid "Current CV"
+msgstr "Current CV"
+
+msgid "Download Current CV"
+msgstr "Download Current CV"
+
+msgid "Back to Dashboard"
+msgstr "Back to Dashboard"
+
+msgid "Save Changes"
+msgstr "Save Changes"
+
+# Carousel translations
+msgid "Meet Our Community"
+msgstr "Meet Our Community"
+
+msgid "Discover talented individuals from top universities around the world"
+msgstr "Discover talented individuals from top universities around the world"
+
+# New Community.co inspired translations
+msgid "VISIBILITY"
+msgstr "VISIBILITY"
+
+msgid "CONNECTIONS"
+msgstr "CONNECTIONS"
+
+msgid "GROWTH"
+msgstr "GROWTH"
+
+msgid "Business moves at the speed of community."
+msgstr "Business moves at the speed of community."
+
+msgid "For over a decade, Youth Club Community has pioneered and grown to become the global leader for professional communities of talented youth from top universities."
+msgstr "For over a decade, Youth Club Community has pioneered and grown to become the global leader for professional communities of talented youth from top universities."
+
+msgid "Let's Do Business"
+msgstr "Let's Do Business"
+
+msgid "Our members are industry leaders who drive business forward."
+msgstr "Our members are industry leaders who drive business forward."
+
+msgid "ABOUT YOUTH CLUB COMMUNITY"
+msgstr "ABOUT YOUTH CLUB COMMUNITY"
+
+msgid "Builders of bespoke professional communities."
+msgstr "Builders of bespoke professional communities."
+
+msgid "We partner with, and are trusted by, the most demanding and discerning business networks in the world. We provide a digital business model, tools, and access to trusted peers, mentors and other meaningful relationships that elevate a member experience into time well spent."
+msgstr "We partner with, and are trusted by, the most demanding and discerning business networks in the world. We provide a digital business model, tools, and access to trusted peers, mentors and other meaningful relationships that elevate a member experience into time well spent."
+
+msgid "More About Us"
+msgstr "More About Us"
+
+msgid "Top Universities"
+msgstr "Top Universities"
+
+msgid "Members from prestigious universities worldwide"
+msgstr "Members from prestigious universities worldwide"
+
+msgid "Professional Network"
+msgstr "Professional Network"
+
+msgid "Connect with industry leaders"
+msgstr "Connect with industry leaders"
+
+msgid "Growth"
+msgstr "Growth"
+
+msgid "Accelerate your career"
+msgstr "Accelerate your career"
+
+msgid "OUR MEMBERS"
+msgstr "OUR MEMBERS"
+
+msgid "Ambitious executives and entrepreneurs who drive business forward."
+msgstr "Ambitious executives and entrepreneurs who drive business forward."
+
+msgid "We understand the needs of motivated business leaders and executives who want to spend their time in purposeful and meaningful ways. Our members are busy and accomplished professional leaders who:"
+msgstr "We understand the needs of motivated business leaders and executives who want to spend their time in purposeful and meaningful ways. Our members are busy and accomplished professional leaders who:"
+
+msgid "Have hyper-specific goals"
+msgstr "Have hyper-specific goals"
+
+msgid "and needs that keep them engaged."
+msgstr "and needs that keep them engaged."
+
+msgid "Want to be surrounded by like-minded peers"
+msgstr "Want to be surrounded by like-minded peers"
+
+msgid "both accomplished and aspirational."
+msgstr "both accomplished and aspirational."
+
+msgid "Want increased visibility"
+msgstr "Want increased visibility"
+
+msgid "for their ideas, insights, and influence within their industry."
+msgstr "for their ideas, insights, and influence within their industry."
+
+msgid "Crave authentic connection"
+msgstr "Crave authentic connection"
+
+msgid "and access to meaningful relationships to grow their businesses."
+msgstr "and access to meaningful relationships to grow their businesses."
+
+msgid "Want immediate support"
+msgstr "Want immediate support"
+
+msgid "from trusted peers and mentors to stay ahead of the game."
+msgstr "from trusted peers and mentors to stay ahead of the game."
+
+msgid "Seek access to valuable benefits"
+msgstr "Seek access to valuable benefits"
+
+msgid "and services that have real impact on their time and business."
+msgstr "and services that have real impact on their time and business."
+
+msgid "More About Our Member Base"
+msgstr "More About Our Member Base"
+
+msgid "A DISTINCT ADVANTAGE"
+msgstr "A DISTINCT ADVANTAGE"
+
+msgid "The business of community for a digital professional world."
+msgstr "The business of community for a digital professional world."
+
+msgid "In a world where community has become a bit of a buzzword, your audience has infinite networking options to choose from—which means you need a differentiated solution."
+msgstr "In a world where community has become a bit of a buzzword, your audience has infinite networking options to choose from—which means you need a differentiated solution."
+
+msgid "We build and manage bespoke professional communities of all shapes and sizes. We know the business of community for a digital-first professional world, because we pioneered, and even literally, wrote the book on it."
+msgstr "We build and manage bespoke professional communities of all shapes and sizes. We know the business of community for a digital-first professional world, because we pioneered, and even literally, wrote the book on it."
+
+msgid "See How We Do It"
+msgstr "See How We Do It"
+
+msgid "It starts with a conversation."
+msgstr "It starts with a conversation."
+
+msgid "Are you an ambitious student or professional seeking a distinct advantage?"
+msgstr "Are you an ambitious student or professional seeking a distinct advantage?"
+
+msgid "A member of our team will show you how we can partner with you to help you launch and grow your professional network."
+msgstr "A member of our team will show you how we can partner with you to help you launch and grow your professional network."
+
+msgid "Get Started Today"
+msgstr "Get Started Today"
+
+msgid "Contact Us"
+msgstr "Contact Us"
+
+msgid "Universities"
+msgstr "Universities"
+
+msgid "Members to date"
+msgstr "Members to date"
+
+msgid "Countries"
+msgstr "Countries"
+
+msgid "Success Rate"
+msgstr "Success Rate"
